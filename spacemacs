@@ -29,11 +29,21 @@ values."
      git
      markdown
      org
-     ;; (shell :variables
-     ;;        shell-default-height 30
-     ;;        shell-default-position 'bottom)
-     ;; spell-checking
+
+     ;;language
+     c-c++
+     vimscript
+     python
+     javascript
+     go
+     html
+     shell-scripts
+     (shell :variables
+            shell-default-height 30
+            shell-default-position 'bottom)
+     spell-checking
      syntax-checking
+
      ;; version-control
      )
    ;; List of additional packages that will be installed without being
@@ -95,16 +105,19 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(gruvbox)
+   dotspacemacs-themes '(gruvbox
+                         monokai
+                         spacemacs-dark
+                        )
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
-   dotspacemacs-default-font '("Source Code Pro"
-                               :size 13
+   dotspacemacs-default-font '("monofur for Powerline"
+                               :size 19
                                :weight normal
                                :width normal
-                               :powerline-scale 1.1)
+                               :powerline-scale 1.2)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The leader key accessible in `emacs state' and `insert state'
@@ -200,7 +213,7 @@ values."
    ;; If non nil line numbers are turned on in all `prog-mode' and `text-mode'
    ;; derivatives. If set to `relative', also turns on relative line numbers.
    ;; (default nil)
-   dotspacemacs-line-numbers nil
+   dotspacemacs-line-numbers 'relative
    ;; If non-nil smartparens-strict-mode will be enabled in programming modes.
    ;; (default nil)
    dotspacemacs-smartparens-strict-mode nil
@@ -224,7 +237,7 @@ values."
    ;; `trailing' to delete only the whitespace at end of lines, `changed'to
    ;; delete only whitespace for changed lines or `nil' to disable cleanup.
    ;; (default nil)
-   dotspacemacs-whitespace-cleanup nil
+   dotspacemacs-whitespace-cleanup 'changed
    ))
 
 (defun dotspacemacs/user-init ()
@@ -234,10 +247,16 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
+    ;; loading myself themes before init over
     (add-to-list 'load-path "~/.emacs.d/private/themes/gruvbox/")
     (require 'gruvbox-theme)
-    (enable-theme 'gruvbox)
     (load-theme 'gruvbox)
+
+    (set-default
+      ;; Shell
+      shell-default-term-shell "/bin/zsh"
+    )
+
   )
 
 (defun dotspacemacs/user-config ()
@@ -247,8 +266,32 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-  )
+  ;;line number
+  (spacemacs/toggle-line-numbers-on)
 
+  ;;key binding
+  (spacemacs/set-leader-keys "ci" 'spacemacs/comment-or-uncomment-lines) ; comment toggle
+  (spacemacs/set-leader-keys "bt" 'evil-buffer-new) ; new buffer
+  (define-key evil-normal-state-map (kbd "e") 'er/expand-region)
+  (define-key evil-visual-state-map (kbd "e") 'er/expand-region)
+
+  ;;scroll
+  ;; Enable mouse support
+  (unless window-system
+    (global-set-key (kbd "<mouse-4>") 'evil-previous-line)
+    (global-set-key (kbd "<mouse-5>") 'evil-next-line))
+  (setq smooth-scroll-margin 10)
+
+  ;; Spaceline
+  (setq powerline-default-separator 'wave
+        spaceline-buffer-encoding-abbrev-p nil
+        spaceline-version-control-p nil)
+
+  ;; Golang testing
+  (setq go-use-gocheck-for-testing  t)
+)
+
+;;TODO: to change region color
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
 (custom-set-variables
@@ -260,7 +303,8 @@ you should place your code here."
    ["color-233" "color-167" "color-142" "color-214" "color-109" "color-175" "color-108" "color-223"])
  '(custom-safe-themes
    (quote
-    ("8ebc31dfeee81ab698ac239a28fe6d31cebb8e9027080c9f56ca104c9dc3cd0d" default))))
+    ("4ca9d91e366c8b6fa28d942475d00f9361ee3ca49636be7b4f2709a620f50512" default)))
+ '(paradox-github-token t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

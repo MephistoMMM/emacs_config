@@ -10,6 +10,9 @@
 ;; Package-Version: 20160429.1551
 ;; Version: 0.16
 
+;; Changer: Mephis Pheies
+;; Email: mephistommm@gmail.com
+
 ;;; Commentary:
 
 ;; A port of the Gruvbox colorscheme for Vim, built on top of the new built-in
@@ -107,7 +110,8 @@
     `(fringe                            ((t (:background ,gruvbox-dark0))))
     `(linum                             ((t (:background ,gruvbox-dark0 :foreground ,gruvbox-dark4))))
     `(hl-line                           ((t (:background ,gruvbox-dark1))))
-    `(region                            ((t (:background ,gruvbox-dark1)))) ;;selection
+    `(region                            ((t (:background ,gruvbox-dark2 :inverse-video t)))) ;;selection
+    ;;change region bg to yellow, fg to dark0
     `(secondary-selection               ((t (:background ,gruvbox-dark1))))
     `(minibuffer-prompt                 ((t (:background ,gruvbox-dark0 :foreground ,gruvbox-bright_green :bold t))))
 
@@ -150,14 +154,14 @@
     `(rainbow-delimiters-unmatched-face ((t (:background nil :foreground ,gruvbox-light0))))
 
     ;; linum-relative
-    `(linum-relative-current-face       ((t (:background ,gruvbox-dark1 :foreground ,gruvbox-light4))))
+    `(linum-relative-current-face       ((t (:background ,gruvbox-dark0 :foreground ,gruvbox-bright_yellow))))
 
     ;; Highlight indentation mode
     `(highlight-indentation-current-column-face ((t (:background ,gruvbox-dark2 ))))
     `(highlight-indentation-face                ((t (:background ,gruvbox-dark1 ))))
 
     ;; Smartparens
-    `(sp-pair-overlay-face              ((t (:background ,gruvbox-dark2))))
+    `(sp-pair-overlay-face              ((t (:background ,gruvbox-dark1))))      ; --------------------- change it to be same as the hl-line
     ;`(sp-wrap-overlay-face             ((t (:inherit sp-wrap-overlay-face))))
     ;`(sp-wrap-tag-overlay-face         ((t (:inherit sp-wrap-overlay-face))))
     `(sp-show-pair-match-face           ((t (:background ,gruvbox-dark2)))) ;; Pair tags highlight
