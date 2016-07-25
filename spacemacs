@@ -25,24 +25,28 @@ values."
      ;; ----------------------------------------------------------------
      auto-completion
      better-defaults
-     emacs-lisp
+
      git
      markdown
      org
+     shell-scripts
+     (shell :variables
+            shell-default-shell 'eshell
+            shell-protect-eshell-prompt t
+            shell-default-height 30
+            shell-default-position 'top)
+     spell-checking
+     syntax-checking
 
      ;;language
      c-c++
+     emacs-lisp
      vimscript
-     python
+     (python :variables python-test-runner 'pylint)
      javascript
+     react
      go
      html
-     shell-scripts
-     (shell :variables
-            shell-default-height 30
-            shell-default-position 'bottom)
-     spell-checking
-     syntax-checking
 
      ;; version-control
      )
@@ -114,10 +118,10 @@ values."
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
    dotspacemacs-default-font '("monofur for Powerline"
-                               :size 19
+                               :size 18
                                :weight normal
                                :width normal
-                               :powerline-scale 1.2)
+                               :powerline-scale 1.4)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The leader key accessible in `emacs state' and `insert state'
@@ -248,15 +252,10 @@ executes.
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
     ;; loading myself themes before init over
-    (add-to-list 'load-path "~/.emacs.d/private/themes/gruvbox/")
+    (push "~/.emacs.d/private/themes/gruvbox/" load-path)
+    (push "~/.emacs.d/private/configs/" load-path)
     (require 'gruvbox-theme)
     (load-theme 'gruvbox)
-
-    (set-default
-      ;; Shell
-      shell-default-term-shell "/bin/zsh"
-    )
-
   )
 
 (defun dotspacemacs/user-config ()
@@ -268,10 +267,16 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   ;;line number
   (spacemacs/toggle-line-numbers-on)
+  (unless (display-graphic-p)
+      (setq linum-relative-format "%3s "))
 
-  ;;key binding
+  ;; Comment
   (spacemacs/set-leader-keys "ci" 'spacemacs/comment-or-uncomment-lines) ; comment toggle
+
+  ;; Buffer
   (spacemacs/set-leader-keys "bt" 'evil-buffer-new) ; new buffer
+
+  ;; Expand
   (define-key evil-normal-state-map (kbd "e") 'er/expand-region)
   (define-key evil-visual-state-map (kbd "e") 'er/expand-region)
 
@@ -283,15 +288,17 @@ you should place your code here."
   (setq smooth-scroll-margin 10)
 
   ;; Spaceline
-  (setq powerline-default-separator 'wave
-        spaceline-buffer-encoding-abbrev-p nil
-        spaceline-version-control-p nil)
+  (require 'self-spaceline-config)
+  (spaceline-self-theme)
+  (setq powerline-default-separator 'wave)
+  (setq ns-use-srgb-colorspace nil)
+  (spaceline-compile);; this bug will be fixed
 
-  ;; Golang testing
-  (setq go-use-gocheck-for-testing  t)
+  (require 'leave-delimited)
+  (define-key evil-insert-state-map (kbd "C-l") 'ar-leave-delimited-forward)
 )
 
-;;TODO: to change region color
+;; TODO: jump out from pairs
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
 (custom-set-variables
@@ -303,7 +310,7 @@ you should place your code here."
    ["color-233" "color-167" "color-142" "color-214" "color-109" "color-175" "color-108" "color-223"])
  '(custom-safe-themes
    (quote
-    ("4ca9d91e366c8b6fa28d942475d00f9361ee3ca49636be7b4f2709a620f50512" default)))
+    ("71ac396c61776675125d3e5a33b3f20152487622cc5f8af367b31a2191714e6f" default)))
  '(paradox-github-token t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

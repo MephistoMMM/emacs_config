@@ -43,10 +43,10 @@
 (deftheme gruvbox "A retro-groove colour theme")
 (let ((gruvbox-dark0_hard  (if (display-graphic-p) "#1d2021" "color-234"))
       ;; change dark0 235 to 233
-      (gruvbox-dark0       (if (display-graphic-p) "#282828" "color-233"))
+      (gruvbox-dark0       (if (display-graphic-p) "#121212" "color-233"))
       (gruvbox-dark0_soft  (if (display-graphic-p) "#32302f" "color-236"))
       ;; change dark1 237 to 235
-      (gruvbox-dark1       (if (display-graphic-p) "#3c3836" "color-235"))
+      (gruvbox-dark1       (if (display-graphic-p) "#282828" "color-235"))
       (gruvbox-dark2       (if (display-graphic-p) "#504945" "color-239"))
       (gruvbox-dark3       (if (display-graphic-p) "#665c54" "color-241"))
       (gruvbox-dark4       (if (display-graphic-p) "#7c6f64" "color-243"))
