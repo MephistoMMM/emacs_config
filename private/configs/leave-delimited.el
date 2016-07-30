@@ -130,12 +130,14 @@
      ((nth 1 pps)
       (goto-char (nth 1 pps))))))
 
+;;###autoload
 (defun ar-leave-delimited-backward ()
   "Go one char beyond string, paren, bracket etc. "
   (interactive)
   (ar-beginn-of-delimited)
   (unless (bobp) (forward-char -1)))
 
+;;###autoload
 (defun ar-leave-delimited-forward ()
   "Go one char beyond string, paren, bracket etc. "
   (interactive)

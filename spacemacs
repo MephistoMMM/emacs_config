@@ -13,7 +13,7 @@ values."
    dotspacemacs-distribution 'spacemacs
    ;; List of additional paths where to look for configuration layers.
    ;; Paths must have a trailing slash (i.e. `~/.mycontribs/')
-   dotspacemacs-configuration-layer-path '()
+   dotspacemacs-configuration-layer-path '("~/.emacs.d/private/Mephis/")
    ;; List of configuration layers to load. If it is the symbol `all' instead
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
@@ -23,12 +23,20 @@ values."
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     auto-completion
+     (auto-completion :variables
+                      auto-completion-enable-sort-by-usage t
+                      auto-completion-return-key-behavior 'complete
+                      auto-completion-tab-key-behavior 'cycle
+                      auto-completion-complete-with-key-sequence nil
+                      auto-completion-complete-with-key-sequence-delay 0.1
+                      auto-completion-enable-snippets-in-popup t
+                      auto-completion-private-snippets-directory "~/.emacs.d/private/snippets/")
      better-defaults
-
+     colors ;; use spc t C c to show css colors
      git
+
      markdown
-     org
+     ;; org
      shell-scripts
      (shell :variables
             shell-default-shell 'eshell
@@ -36,19 +44,23 @@ values."
             shell-default-height 30
             shell-default-position 'top)
      spell-checking
-     syntax-checking
+     (syntax-checking :variables
+                      syntax-checking-enable-by-default t)
+     (ranger :variables
+              ranger-show-preview t)
 
      ;;language
-     c-c++
      emacs-lisp
-     vimscript
-     (python :variables python-test-runner 'pylint)
+     python
      javascript
      react
      go
      html
-
      ;; version-control
+
+
+     ;; Self layers
+     mp-hacking
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -56,7 +68,14 @@ values."
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages '()
    ;; A list of packages and/or extensions that will not be install and loaded.
-   dotspacemacs-excluded-packages '()
+   dotspacemacs-excluded-packages '(rainbow-identifiers
+                                    fancy-battery
+                                    coffee-mode
+                                    anaconda-mode
+                                    anaconda-eldoc-mode
+                                    neotree
+                                    nyan-mode
+                                    spacemacs-theme)
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
    ;; are declared in a layer which is not a member of
    ;; the list `dotspacemacs-configuration-layers'. (default t)
@@ -111,7 +130,6 @@ values."
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(gruvbox
                          monokai
-                         spacemacs-dark
                         )
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
@@ -268,24 +286,9 @@ you should place your code here."
   ;;line number
   (spacemacs/toggle-line-numbers-on)
   (unless (display-graphic-p)
-      (setq linum-relative-format "%3s "))
+    (setq linum-relative-format "%3s "))
 
-  ;; Comment
-  (spacemacs/set-leader-keys "ci" 'spacemacs/comment-or-uncomment-lines) ; comment toggle
-
-  ;; Buffer
-  (spacemacs/set-leader-keys "bt" 'evil-buffer-new) ; new buffer
-
-  ;; Expand
-  (define-key evil-normal-state-map (kbd "e") 'er/expand-region)
-  (define-key evil-visual-state-map (kbd "e") 'er/expand-region)
-
-  ;;scroll
-  ;; Enable mouse support
-  (unless window-system
-    (global-set-key (kbd "<mouse-4>") 'evil-previous-line)
-    (global-set-key (kbd "<mouse-5>") 'evil-next-line))
-  (setq smooth-scroll-margin 10)
+  (mp-hacking/hacking-keybinding-init)
 
   ;; Spaceline
   (require 'self-spaceline-config)
@@ -294,11 +297,12 @@ you should place your code here."
   (setq ns-use-srgb-colorspace nil)
   (spaceline-compile);; this bug will be fixed
 
-  (require 'leave-delimited)
-  (define-key evil-insert-state-map (kbd "C-l") 'ar-leave-delimited-forward)
+  ;; Ranger
+  (setq ranger-ignored-extensions '("mkv" "iso" "mp4"))
+  (setq ranger-max-preview-size 2)
 )
 
-;; TODO: jump out from pairs
+;; TODO: config for programming
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
 (custom-set-variables
