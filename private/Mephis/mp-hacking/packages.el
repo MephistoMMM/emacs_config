@@ -14,11 +14,27 @@
         (leave-delimited :location (recipe
                                     :fetcher github
                                     :repo "MephistoMMM/leave-delimited"))
+        (vue-mode        :location (recipe
+                                    :fetcher github
+                                    :repo "codefalling/vue-mode"))
+        auto-complete
         writeroom-mode
         js2-mode
         ;; flycheck
         flycheck
         ))
+
+(defun mp-hacking/post-init-auto-complete ()
+  "Ignore case if completion target string doesn't include upper characters
+   http://auto-complete.org/doc/manual.html#ignore-case"
+  (with-eval-after-load 'auto-complete
+    (setq ac-ignore-case 'smart)))
+
+(defun mp-hacking/init-vue-mode ()
+  "Init vue-mode."
+  (use-package vue-mode
+    :mode ("\\.vue\\'" . vue-mode)
+    ))
 
 (defun mp-hacking/init-writeroom-mode ()
   "Free writing mode - focus your code."
@@ -29,39 +45,49 @@
       :on (writeroom-mode)
       :off (writeroom-mode -1)
       :documentation "Free writing mode - focus your code")
-    :config
-    (setq writeroom-restore-window-config t)
-    (with-eval-after-load 'writeroom-mode
+    ))
+
+(defun mp-hacking/post-init-writeroom-mode ()
+  "Config base variables and bind keys in writeroom-mode."
+  (with-eval-after-load 'writeroom-mode
+    (progn
+      (setq writeroom-restore-window-config t)
+      (setq writeroom-restore-window-config t)
+      (setq writeroom-width 80)
       (define-key writeroom-mode-map (kbd "C-M-<") #'writeroom-decrease-width)
       (define-key writeroom-mode-map (kbd "C-M->") #'writeroom-increase-width)
-      (define-key writeroom-mode-map (kbd "C-M-=") #'writeroom-adjust-width))))
-
+      (define-key writeroom-mode-map (kbd "C-M-=") #'writeroom-adjust-width)
+    ))
+  )
 
 (defun mp-hacking/init-leave-delimited ()
   "Let us be free to  go out of parens."
   (use-package leave-delimited
     :defer t))
 
-(defun mp-hacking/post-init-flycheck ()
-  "While flycheck enabled, Add hook for js2-mode to checking does js2-checks need to hide.."
-  (add-hook 'js2-mode-hook 'mp-hacking/hide-js2-checks-if-flycheck-active))
+;; (defun mp-hacking/post-init-flycheck ()
+;;   "While flycheck enabled, Add hook for js2-mode to checking does js2-checks need to hide.."
+;;   (add-hook 'js2-mode-hook 'mp-hacking/hide-js2-checks-if-flycheck-active))
 
 (defun mp-hacking/post-init-js2-mode ()
   "Add a series of default configuration fo js2-mode"
+  (add-hook 'js2-mode-hook (lambda ()
+                             (when (configuration-layer/package-usedp 'flycheck-mode)
+                               (flycheck-mode 1))))
   (with-eval-after-load 'js2-mode
     (progn
       ;; these mode related variables must be in eval-after-load
       ;; https://github.com/magnars/.emacs.d/blob/master/settings/setup-js2-mode.el
       (setq-default js2-global-externs '("module"
-                                          "require"
-                                          "assert"
-                                          "setTimeout"
-                                          "clearTimeout"
-                                          "setInterval"
-                                          "clearInterval"
-                                          "__dirname"
-                                          "console"
-                                          "JSON"))
+                                         "require"
+                                         "assert"
+                                         "setTimeout"
+                                         "clearTimeout"
+                                         "setInterval"
+                                         "clearInterval"
+                                         "__dirname"
+                                         "console"
+                                         "JSON"))
       (setq-default js2-idle-timer-delay 0.2)
       (setq-default js-indent-level 2)
       (setq-default js2-basic-offset 2)
@@ -71,9 +97,7 @@
       (setq-default js2-mode-show-strict-warnings nil)
       (setq-default js2-highlight-external-variables t)
       (setq-default js2-strict-trailing-comma-warning nil)
-
     ))
-    ;;(add-hook 'flycheck-hook 'mp-hacking/hide-js2-checks-if-flycheck-active)
   )
 
 ;;; packages.el ends here
