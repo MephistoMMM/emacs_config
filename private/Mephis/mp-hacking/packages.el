@@ -14,12 +14,23 @@
         (leave-delimited :location (recipe
                                     :fetcher github
                                     :repo "MephistoMMM/leave-delimited"))
+        web-mode
         auto-complete
         writeroom-mode
         js2-mode
         ;; flycheck
         flycheck
         ))
+
+(defun mp-hacking/post-init-web-mode ()
+  "Init web mode for indent offset, auto-mode-alist and so.
+   http://web-mode.org"
+  (add-to-list 'auto-mode-alist '("\\.vue\\'" . web-mode))
+  (with-eval-after-load 'web-mode
+    (setq web-mode-code-indent-offset 2)
+    (setq web-mode-markup-indent-offset 2)
+    (setq web-mode-css-indent-offset 2))
+  )
 
 (defun mp-hacking/post-init-auto-complete ()
   "Ignore case if completion target string doesn't include upper characters
@@ -63,7 +74,6 @@
 
 (defun mp-hacking/post-init-js2-mode ()
   "Add a series of default configuration fo js2-mode"
-  (add-to-list 'auto-mode-alist '("\\.vue\\'" . js-mode))
   (add-hook 'js2-mode-hook (lambda ()
                              (when (configuration-layer/package-usedp 'flycheck-mode)
                                (flycheck-mode 1))))
