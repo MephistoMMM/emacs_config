@@ -14,9 +14,6 @@
         (leave-delimited :location (recipe
                                     :fetcher github
                                     :repo "MephistoMMM/leave-delimited"))
-        (vue-mode        :location (recipe
-                                    :fetcher github
-                                    :repo "codefalling/vue-mode"))
         auto-complete
         writeroom-mode
         js2-mode
@@ -30,11 +27,6 @@
   (with-eval-after-load 'auto-complete
     (setq ac-ignore-case 'smart)))
 
-(defun mp-hacking/init-vue-mode ()
-  "Init vue-mode."
-  (use-package vue-mode
-    :mode ("\\.vue\\'" . vue-mode)
-    ))
 
 (defun mp-hacking/init-writeroom-mode ()
   "Free writing mode - focus your code."
@@ -71,6 +63,7 @@
 
 (defun mp-hacking/post-init-js2-mode ()
   "Add a series of default configuration fo js2-mode"
+  (add-to-list 'auto-mode-alist '("\\.vue\\'" . js-mode))
   (add-hook 'js2-mode-hook (lambda ()
                              (when (configuration-layer/package-usedp 'flycheck-mode)
                                (flycheck-mode 1))))
@@ -97,6 +90,7 @@
       (setq-default js2-mode-show-strict-warnings nil)
       (setq-default js2-highlight-external-variables t)
       (setq-default js2-strict-trailing-comma-warning nil)
+
     ))
   )
 

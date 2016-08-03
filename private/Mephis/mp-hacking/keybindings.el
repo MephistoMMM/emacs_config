@@ -31,8 +31,8 @@
 
   ;; Jump out from pairs
   (define-key evil-insert-state-map (kbd "C-'") 'ar-leave-delimited-forward)
+  (define-key evil-normal-state-map (kbd "C-'") 'ar-leave-delimited-forward)
   (define-key evil-insert-state-map (kbd "C-l") 'ar-leave-delimited-forward)
-  (define-key evil-normal-state-map (kbd "C-l") 'ar-leave-delimited-forward)
 
   ;; WriteRoom
   (spacemacs/set-leader-keys "wr" 'mp-hacking/toggle-writeroom-mode) ; comment toggle
