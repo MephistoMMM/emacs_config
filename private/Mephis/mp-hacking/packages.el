@@ -14,6 +14,7 @@
         (leave-delimited :location (recipe
                                     :fetcher github
                                     :repo "MephistoMMM/leave-delimited"))
+        haskell-mode
         web-mode
         auto-complete
         writeroom-mode
@@ -21,6 +22,15 @@
         ;; flycheck
         flycheck
         ))
+
+(defun mp-hacking/post-init-haskell-mode ()
+  "Init web mode for indent offset, auto-mode-alist and so.
+   http://web-mode.org"
+  (with-eval-after-load 'haskell-mode
+    (add-to-list 'exec-path
+                 (concat (getenv "HOME") "/.cabal/bin/"))
+    )
+  )
 
 (defun mp-hacking/post-init-web-mode ()
   "Init web mode for indent offset, auto-mode-alist and so.

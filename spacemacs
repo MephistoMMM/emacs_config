@@ -23,6 +23,7 @@ values."
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
+     ;; Catalogue: base
      (auto-completion :variables
                       auto-completion-enable-sort-by-usage t
                       auto-completion-return-key-behavior 'complete
@@ -31,40 +32,41 @@ values."
                       auto-completion-complete-with-key-sequence-delay 0.1
                       auto-completion-enable-snippets-in-popup t
                       auto-completion-private-snippets-directory "~/.emacs.d/private/snippets/")
-     better-defaults
-     colors ;; use spc t C c to show css colors
      git
+     spell-checking
+     (syntax-checking :variables
+                      syntax-checking-enable-by-default t)
 
+     ;; Catalogue: tools
+     colors ;; use spc t C c to show css colors
      markdown
-     ;; org
-     shell-scripts
+     (ranger :variables
+             ranger-show-preview t)
      (shell :variables
             shell-default-shell 'eshell
             shell-protect-eshell-prompt t
             shell-default-height 30
             shell-default-position 'top)
-     spell-checking
-     (syntax-checking :variables
-                      syntax-checking-enable-by-default t)
-     (ranger :variables
-              ranger-show-preview t)
+     ;; version-control
+     ;; org
 
-     ;;language
+     ;; Catalogue: language
      emacs-lisp
+     haskell
      html
-     ;; to ready: pip install six pylint pytest yapf jedi json-rpc service_factory
+     shell-scripts
+     ;; Ready: pip install six pylint pytest yapf jedi json-rpc service_factory
      (python :variables
              python-enable-yapf-format-on-save t
              python-test-runner 'pytest)
-     ;; to ready: npm install eslint
+     ;; Ready: npm install eslint
      javascript
+     ;; Ready: cabal install stylish-haskell hlint hasktags ghc-mod
      react
      go
      html
-     ;; version-control
 
-
-     ;; Self layers
+     ;; Catalogue: self layers
      mp-hacking
      )
    ;; List of additional packages that will be installed without being
@@ -74,8 +76,9 @@ values."
    dotspacemacs-additional-packages '()
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages
-   '(rainbow-identifiers fancy-battery coffee-mode
-                         anaconda-eldoc-mode anaconda-mode
+   '(rainbow-identifiers fancy-battery coffee-mode auto-complete
+                         company-tern
+                         anaconda-eldoc-mode anaconda-mode company-anaconda
                          neotree nyan-mode smartparens
                          spacemacs-theme mmm-mode)
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
