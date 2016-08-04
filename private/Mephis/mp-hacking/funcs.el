@@ -10,8 +10,7 @@
 ;;; Code:
 
 (defun mp-hacking/toggle-writeroom-mode ()
-  "Line number will affect the work of writeroom, making it fail to centrel text.
-   So, let us close it first!"
+  "Line number will affect the work of writeroom, making it fail to centrel text.  So, let us close it first!"
   (interactive)
   (if writeroom-mode
     (progn ; t
@@ -20,6 +19,14 @@
     (progn ; nil
       (spacemacs/toggle-line-numbers-off)
       (spacemacs/toggle-writeroom-on)))
+  )
+
+(defun mp-hacking/better-default ()
+  "This function set many default config to more better!
+Some configurations should be written at here which be unable to config
+in 'with-eval-after-load."
+  ;; Python
+  (setq python-shell-interpreter "python3")
   )
 
 (defun mp-hacking/hide-js2-checks-if-flycheck-active ()

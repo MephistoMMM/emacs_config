@@ -24,8 +24,7 @@
         ))
 
 (defun mp-hacking/post-init-haskell-mode ()
-  "Init web mode for indent offset, auto-mode-alist and so.
-   http://web-mode.org"
+  "Add haskell cabal bin path to 'exec-path."
   (with-eval-after-load 'haskell-mode
     (add-to-list 'exec-path
                  (concat (getenv "HOME") "/.cabal/bin/"))
@@ -33,8 +32,8 @@
   )
 
 (defun mp-hacking/post-init-web-mode ()
-  "Init web mode for indent offset, auto-mode-alist and so.
-   http://web-mode.org"
+  "Init web mode for indent offset, 'auto-mode-alist and so.
+http://web-mode.org"
   (add-to-list 'auto-mode-alist '("\\.vue\\'" . web-mode))
   (with-eval-after-load 'web-mode
     (setq web-mode-code-indent-offset 2)
@@ -44,7 +43,7 @@
 
 (defun mp-hacking/post-init-auto-complete ()
   "Ignore case if completion target string doesn't include upper characters
-   http://auto-complete.org/doc/manual.html#ignore-case"
+http://auto-complete.org/doc/manual.html#ignore-case"
   (with-eval-after-load 'auto-complete
     (setq ac-ignore-case 'smart)))
 

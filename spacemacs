@@ -77,7 +77,8 @@ values."
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages
    '(rainbow-identifiers fancy-battery coffee-mode auto-complete
-                         company-tern
+                         magit-gh-pulls magit-gitflow auto-complete
+                         company-tern cython-mode
                          anaconda-eldoc-mode anaconda-mode company-anaconda
                          neotree nyan-mode smartparens
                          spacemacs-theme mmm-mode)
@@ -310,6 +311,7 @@ you should place your code here."
   ;; Tab
   (setq tab-always-indent nil)
 
+  (mp-hacking/better-default)
   (mp-hacking/hacking-keybinding-init)
 )
 
