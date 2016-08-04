@@ -51,7 +51,8 @@ values."
 
      ;;language
      emacs-lisp
-     python
+     html
+     ;; (python :variables python-test-runner 'pytest)
      javascript
      react
      go
@@ -68,14 +69,10 @@ values."
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages '()
    ;; A list of packages and/or extensions that will not be install and loaded.
-   dotspacemacs-excluded-packages '(rainbow-identifiers
-                                    fancy-battery
-                                    coffee-mode
-                                    anaconda-mode
-                                    anaconda-eldoc-mode
-                                    neotree
-                                    nyan-mode
-                                    spacemacs-theme)
+   dotspacemacs-excluded-packages
+   '(rainbow-identifiers fancy-battery coffee-mode
+                         neotree nyan-mode smartparens
+                         spacemacs-theme mmm-mode)
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
    ;; are declared in a layer which is not a member of
    ;; the list `dotspacemacs-configuration-layers'. (default t)
@@ -115,7 +112,7 @@ values."
    ;; directory. A string value must be a path to an image format supported
    ;; by your Emacs build.
    ;; If the value is nil then no banner is displayed. (default 'official)
-   dotspacemacs-startup-banner 'official
+   dotspacemacs-startup-banner "~/.emacs.d/private/banner.png"
    ;; List of items to show in the startup buffer. If nil it is disabled.
    ;; Possible values are: `recents' `bookmarks' `projects'.
    ;; (default '(recents projects))
@@ -283,23 +280,29 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+  ;; dotspacemacs-search-tools: ag
+  ;; install ag first!
+
   ;;line number
   (spacemacs/toggle-line-numbers-on)
   (unless (display-graphic-p)
     (setq linum-relative-format "%3s "))
-
-  (mp-hacking/hacking-keybinding-init)
-
   ;; Spaceline
   (require 'self-spaceline-config)
   (spaceline-self-theme)
   (setq powerline-default-separator 'wave)
   (setq ns-use-srgb-colorspace nil)
   (spaceline-compile);; this bug will be fixed
-
   ;; Ranger
   (setq ranger-ignored-extensions '("mkv" "iso" "mp4"))
   (setq ranger-max-preview-size 2)
+  ;; Parens
+  (electric-pair-mode t)
+  (show-paren-mode t)
+  ;; Tab
+  (setq tab-always-indent nil)
+
+  (mp-hacking/hacking-keybinding-init)
 )
 
 ;; TODO: config for programming
@@ -312,6 +315,7 @@ you should place your code here."
  ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector
    ["color-233" "color-167" "color-142" "color-214" "color-109" "color-175" "color-108" "color-223"])
+ '(company-etags-ignore-case nil)
  '(custom-safe-themes
    (quote
     ("71ac396c61776675125d3e5a33b3f20152487622cc5f8af367b31a2191714e6f" default)))
