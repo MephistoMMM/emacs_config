@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: test_go
+# key: testgo
+# --
+Test${1:SomeTing}$0
