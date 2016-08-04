@@ -52,7 +52,11 @@ values."
      ;;language
      emacs-lisp
      html
-     ;; (python :variables python-test-runner 'pytest)
+     ;; to ready: pip install six pylint pytest yapf jedi json-rpc service_factory
+     (python :variables
+             python-enable-yapf-format-on-save t
+             python-test-runner 'pytest)
+     ;; to ready: npm install eslint
      javascript
      react
      go
@@ -71,6 +75,7 @@ values."
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages
    '(rainbow-identifiers fancy-battery coffee-mode
+                         anaconda-eldoc-mode anaconda-mode
                          neotree nyan-mode smartparens
                          spacemacs-theme mmm-mode)
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
