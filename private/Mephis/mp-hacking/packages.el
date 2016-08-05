@@ -109,7 +109,6 @@ http://auto-complete.org/doc/manual.html#ignore-case"
       (setq-default js2-mode-show-strict-warnings nil)
       (setq-default js2-highlight-external-variables t)
       (setq-default js2-strict-trailing-comma-warning nil)
-
     ))
   )
 

@@ -46,7 +46,8 @@
   (setq smooth-scroll-margin 10)
 
   ;; Yasnippet
-  ;;Use C-k to start complete snips and use TAB to go arround the points
+  ;; Use C-k to start complete snips and use TAB to go arround the points
+  ;; How to write yasnippet: https://joaotavora.github.io/yasnippet/snippet-development.html or http://d.pr/n/1bHuv
   (define-key evil-insert-state-map (kbd "C-k") 'hippie-expand)
   (spacemacs/declare-prefix "h" "helm/hacking/highlight/help")
   (spacemacs/declare-prefix "hy" "yasnippet")
