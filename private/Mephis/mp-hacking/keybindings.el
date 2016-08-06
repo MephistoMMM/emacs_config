@@ -32,7 +32,6 @@
   ;; Jump out from pairs
   (define-key evil-insert-state-map (kbd "C-'") 'ar-leave-delimited-forward)
   (define-key evil-normal-state-map (kbd "C-'") 'ar-leave-delimited-forward)
-  (define-key evil-insert-state-map (kbd "C-l") 'ar-leave-delimited-forward)
 
   ;; WriteRoom
   (spacemacs/set-leader-keys "wr" 'mp-hacking/toggle-writeroom-mode) ; comment toggle
@@ -48,7 +47,7 @@
   ;; Yasnippet
   ;; Use C-k to start complete snips and use TAB to go arround the points
   ;; How to write yasnippet: https://joaotavora.github.io/yasnippet/snippet-development.html or http://d.pr/n/1bHuv
-  (define-key evil-insert-state-map (kbd "C-k") 'hippie-expand)
+  (define-key evil-insert-state-map (kbd "C-l") 'hippie-expand)
   (spacemacs/declare-prefix "h" "helm/hacking/highlight/help")
   (spacemacs/declare-prefix "hy" "yasnippet")
   (spacemacs/set-leader-keys "hyn" 'yas-new-snippet)                      ;;hacking yasnippet new

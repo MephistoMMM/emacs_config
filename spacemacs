@@ -47,8 +47,9 @@ values."
             shell-protect-eshell-prompt t
             shell-default-height 30
             shell-default-position 'top)
+     (org :variables
+          org-enable-github-support t)
      ;; version-control
-     ;; org
 
      ;; Catalogue: language
      emacs-lisp
@@ -63,10 +64,12 @@ values."
      javascript
      ;; Ready: cabal install stylish-haskell hlint hasktags ghc-mod
      react
+     vimscript
      go
      html
 
      ;; Catalogue: self layers
+     mp-org
      mp-hacking
      )
    ;; List of additional packages that will be installed without being
@@ -78,10 +81,11 @@ values."
    dotspacemacs-excluded-packages
    '(rainbow-identifiers fancy-battery coffee-mode auto-complete
                          magit-gh-pulls magit-gitflow auto-complete
-                         company-tern cython-mode
+                         company-tern cython-mode gnuplot
                          anaconda-eldoc-mode anaconda-mode company-anaconda
                          neotree nyan-mode smartparens
-                         spacemacs-theme mmm-mode)
+                         spacemacs-theme mmm-mode
+                         org-mime message-moe)
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
    ;; are declared in a layer which is not a member of
    ;; the list `dotspacemacs-configuration-layers'. (default t)
@@ -310,6 +314,8 @@ you should place your code here."
   (show-paren-mode t)
   ;; Tab
   (setq tab-always-indent nil)
+  ;; Tern modeline
+  (diminish 'tern-mode "\u24e3")
 
   (mp-hacking/better-default)
   (mp-hacking/hacking-keybinding-init)
