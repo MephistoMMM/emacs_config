@@ -64,7 +64,6 @@ values."
      javascript
      ;; Ready: cabal install stylish-haskell hlint hasktags ghc-mod
      react
-     vimscript
      go
      html
 
@@ -83,7 +82,7 @@ values."
                          magit-gh-pulls magit-gitflow auto-complete
                          company-tern cython-mode gnuplot
                          anaconda-eldoc-mode anaconda-mode company-anaconda
-                         neotree nyan-mode smartparens
+                         neotree nyan-mode smartparens  company-emoji
                          spacemacs-theme mmm-mode
                          org-mime message-moe)
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that

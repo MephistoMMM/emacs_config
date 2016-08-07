@@ -29,10 +29,11 @@
   "Configurations for org mode"
   (add-hook 'org-mode-hook (lambda () (spacemacs/toggle-line-numbers-off)) 'append)
   (with-eval-after-load 'org
+    (setq org-directory "~/Dropbox/org")
+
     (setq-default
-      org-bullets-bullet-list '("❁" "✾" "❀" "❖")
-      org-directory "~/Org/"
-      org-agenda-files (quote ("~/Dropbox/org/" ))
+      org-bullets-bullet-list '("❁" "✾" "❀" "❖" "✧")
+      ;; org-agenda-files (quote ("~/Dropbox/org/" ))
       org-default-notes-file "~/Dropbox/org/notes.org"
 
       ;; org-agenda-restore-windows-after-quit t
@@ -42,23 +43,46 @@
       ;; org-footnote-auto-label 'confirm
 
       org-capture-templates
-      '(("t" "Tasks" entry (file+headline "~/Dropbox/org/TODO.org" "Inbox")
-        "** TODO %^{Task}\nSCHEDULED: %t\n")
-        ("J" "Journal entry with date" plain
-        (file+datetree+prompt "~/Dropbox/org/journal.org")
-        "%K - %a\n%i\n%?\n"
-        :unnarrowed t)
-        ("s" "Journal entry with date, scheduled" entry
-        (file+datetree+prompt "~/Dropbox/org/journal.org")
-        "* \n%K - %a\n%t\t%i\n%?\n"
-        :unnarrowed t)
-        ("p" "Protocol" entry (file+headline "~/Dropbox/org/TODO.org" "Inbox")
-        "** %^{Title}\nSource: %u, %c\n #+BEGIN_QUOTE\n%i\n#+END_QUOTE\n\n\n%?")
-        ("L" "Protocol Link" entry (file+headline "~/Dropbox/org/TODO.org" "Inbox")
-        "** TODO %? [[%:link][%:description]] \nCaptured On: %U"))
+      '(("w" "Work" entry
+         (file+headline (concat org-directory "/todo.org") "Fighting")
+         "* TODO [#A] %^{Task}\nSCHEDULED: %t\n")
+
+        ("b" "Blog Ideas" entry
+         (file+headline (concat org-directory "/todo.org") "Blog Ideas")
+         "* TODO [#B] %?\n  %i\n %U"
+         :empty-lines 1)
+
+        ("t" "Todo" entry
+         (file+headline (concat org-directory "/todo.org") "Play Space")
+         "* TODO [#B] %?\n  %i\n"
+         :empty-lines 1)
+
+        ("l" "Links" entry
+         (file+headline (concat org-directory "/todo.org") "Quick Notes")
+         "* TODO [#C] %?\n  %i\n %a \n %U"
+         :empty-lines 1)
+
+        ("s" "Code Snippet" entry
+         (file (concat org-directory "/snippets.org"))
+         "* %?\t%^g\n#+BEGIN_SRC %^{language}\n\n#+END_SRC")
+
+        ("n" "Notes" entry
+         (file+headline (concat org-directory "/Notes.org") "Quick Notes")
+         "* %?\n  %i\n %U"
+         :empty-lines 1)
+
+        ("j" "Technical Notes" entry
+         (file (concat org-directory "/journals.org"))
+         "* Technical Notes [%<%d-%b-%Y>] \n%? \n "
+         :empty-lines 1)
+
+        ("d" "Daily" entry
+         (file+datetree (concat org-directory "/dailies.org"))
+         "* Daily [%<%d-%b-%Y>] \n%? \n "
+         :empty-lines 1)
       )
-    )
-  )
+    ))
+ )
 
 
 ;;; mp-org/packages.el ends here
