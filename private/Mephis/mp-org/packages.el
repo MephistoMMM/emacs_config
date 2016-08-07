@@ -33,52 +33,61 @@
 
     (setq-default
       org-bullets-bullet-list '("❁" "✾" "❀" "❖" "✧")
-      ;; org-agenda-files (quote ("~/Dropbox/org/" ))
+      org-agenda-files (quote ("~/Dropbox/org/" ))
       org-default-notes-file "~/Dropbox/org/notes.org"
 
-      ;; org-agenda-restore-windows-after-quit t
-      ;; org-agenda-window-setup 'current-window
-      ;; org-catch-invisible-edits 'show-and-error
-      ;; org-footnote-auto-adjust t
-      ;; org-footnote-auto-label 'confirm
+      ;; org-log-done 'note
 
+      org-agenda-restore-windows-after-quit t
+      org-agenda-window-setup 'other-window
+      org-footnote-auto-adjust t
+      org-footnote-auto-label 'confirm
+
+      org-link-abbrev-alist
+      '(("github"    . "https://github.com")
+        ("codewars"  . "https://www.codewars.com")
+        ("bili"      . "http://www.bilibili.com")
+        ("spacemacs" . "http://spacemacs.org"))
+
+      org-modules
+      '(org-bbdb org-habit org-info org-irc org-w3m org-mac-link org-protocol)
       org-capture-templates
-      '(("w" "Work" entry
+      '(("w" "Task" entry
          (file+headline (concat org-directory "/todo.org") "Fighting")
-         "* TODO [#A] %^{Task}\nSCHEDULED: %t\n")
+         "* TODO [#A]  %^{Task}\nSCHEDULED: %t\n")
 
         ("b" "Blog Ideas" entry
          (file+headline (concat org-directory "/todo.org") "Blog Ideas")
-         "* TODO [#B] %?\n  %i\n %U"
+         "* TODO [#B]  %?\n  %i\n %U"
          :empty-lines 1)
 
         ("t" "Todo" entry
          (file+headline (concat org-directory "/todo.org") "Play Space")
-         "* TODO [#B] %?\n  %i\n"
+         "* TODO [#%^{level|B|C}]  %?\nSCHEDULED: %t\n%i\n"
          :empty-lines 1)
 
         ("l" "Links" entry
-         (file+headline (concat org-directory "/todo.org") "Quick Notes")
-         "* TODO [#C] %?\n  %i\n %a \n %U"
+         (file+headline (concat org-directory "/todo.org") "Play Space")
+         "* TODO [#C]  %? [[%:link][%:description]] \t%^g\nCaptured On: %U\n"
+         :empty-lines 1)
+
+        ("h" "Habits" entry
+         (file+headline (concat org-directory "/todo.org") "Habits")
+         "* TODO [#B]  %?\t:Habits:\nSCHEDULED: timestamp\n:PROPERTIES:\n:STYLE:\thabit\n:END:"
          :empty-lines 1)
 
         ("s" "Code Snippet" entry
-         (file (concat org-directory "/snippets.org"))
-         "* %?\t%^g\n#+BEGIN_SRC %^{language}\n\n#+END_SRC")
+         (file (concat org-directory "/Notes.org") "Snippets")
+         "* %?\n#+BEGIN_SRC %^{language}\n\n#+END_SRC")
 
-        ("n" "Notes" entry
+        ("n" "Quick Notes" entry
          (file+headline (concat org-directory "/Notes.org") "Quick Notes")
-         "* %?\n  %i\n %U"
+         "* %?\n  %i\n\n%a\n%U"
          :empty-lines 1)
 
         ("j" "Technical Notes" entry
          (file (concat org-directory "/journals.org"))
          "* Technical Notes [%<%d-%b-%Y>] \n%? \n "
-         :empty-lines 1)
-
-        ("d" "Daily" entry
-         (file+datetree (concat org-directory "/dailies.org"))
-         "* Daily [%<%d-%b-%Y>] \n%? \n "
          :empty-lines 1)
       )
     ))
