@@ -78,7 +78,7 @@ values."
    dotspacemacs-additional-packages '()
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages
-   '(rainbow-identifiers fancy-battery coffee-mode auto-complete
+   '(rainbow-identifiers fancy-battery coffee-mode
                          magit-gh-pulls magit-gitflow auto-complete
                          company-tern cython-mode gnuplot
                          anaconda-eldoc-mode anaconda-mode company-anaconda

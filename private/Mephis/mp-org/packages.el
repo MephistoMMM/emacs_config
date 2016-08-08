@@ -68,7 +68,7 @@
 
         ("l" "Links" entry
          (file+headline (concat org-directory "/todo.org") "Play Space")
-         "* TODO [#C]  %? [[%:link][%:description]] \t%^g\nCaptured On: %U\n"
+         "* TODO [#C]  %? link \t%^g\nCaptured On: %U\n"
          :empty-lines 1)
 
         ("h" "Habits" entry
