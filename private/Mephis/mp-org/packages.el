@@ -15,7 +15,30 @@
     org
     org-agenda
     org-pomodoro
+    markdown-mode
+    company-mode
+    (company-orz :location
+                 "~/.emacs.d/private/local/company-orz/")
     )
+  )
+
+(defun mp-org/init-company-orz ()
+  "Add company-orz to backend"
+  (use-package company-orz
+    :defer t
+    :init
+    (add-hook 'markdown-mode-hook
+              (lambda () (add-to-list 'company-backends-markdown-mode 'company-orz)))
+    (add-hook 'org-mode-hook
+              (lambda () (add-to-list 'company-backends-org-mode 'company-orz)))
+    ))
+
+(defun mp-org/post-init-markdown-mode ()
+  "Add mrg key binding!"
+  (setq-default
+   mrg-directory-path "~/Dropbox/mrg"
+   markdown-enable-math t)
+  (spacemacs/set-leader-keys "am" 'mp-org/create-mrg-buffer)
   )
 
 (defun mp-org/post-init-org-agenda ()
@@ -30,6 +53,14 @@
   (add-hook 'org-mode-hook (lambda () (spacemacs/toggle-line-numbers-off)) 'append)
   (with-eval-after-load 'org
     (setq org-directory "~/Dropbox/org")
+    (org-babel-do-load-languages
+     'org-babel-load-languages
+     '((sh . t)
+       (js . t)
+       (python . t)
+       (emacs-lisp . t)
+       (haskell . t)
+       (C . t)))
 
     (setq-default
       org-bullets-bullet-list '("❁" "✾" "❀" "❖" "✧")
@@ -56,11 +87,6 @@
          (file+headline (concat org-directory "/todo.org") "Fighting")
          "* TODO [#A]  %^{Task}\nSCHEDULED: %t\n")
 
-        ("b" "Blog Ideas" entry
-         (file+headline (concat org-directory "/todo.org") "Blog Ideas")
-         "* TODO [#B]  %?\n  %i\n %U"
-         :empty-lines 1)
-
         ("t" "Todo" entry
          (file+headline (concat org-directory "/todo.org") "Play Space")
          "* TODO [#%^{level|B|C}]  %?\nSCHEDULED: %t\n%i\n"
@@ -74,21 +100,42 @@
         ("h" "Habits" entry
          (file+headline (concat org-directory "/todo.org") "Habits")
          "* TODO [#B]  %?\t:Habits:\nSCHEDULED: timestamp\n:PROPERTIES:\n:STYLE:\thabit\n:END:"
+
          :empty-lines 1)
 
-        ("s" "Code Snippet" entry
-         (file (concat org-directory "/Notes.org") "Snippets")
-         "* %?\n#+BEGIN_SRC %^{language}\n\n#+END_SRC")
-
         ("n" "Quick Notes" entry
-         (file+headline (concat org-directory "/Notes.org") "Quick Notes")
+         (file+headline (concat org-directory "/Notes.org"))
          "* %?\n  %i\n\n%a\n%U"
          :empty-lines 1)
 
-        ("j" "Technical Notes" entry
+        ("b" "Technical Notes" entry ; big note
          (file (concat org-directory "/journals.org"))
-         "* Technical Notes [%<%d-%b-%Y>] \n%? \n "
+         "* %^{Technical Notes} [%<%d-%b-%Y>] \n%? \n "
          :empty-lines 1)
+
+        ("s" "Code Snippet[Shell Script]" entry
+         (file+headline (concat org-directory "/snippets.org") "Shell Script")
+         "* %?\t:sh:\n#+BEGIN_SRC sh\n\n#+END_SRC")
+
+        ("f" "Code Snippet[Front End]" entry
+         (file+headline (concat org-directory "/snippets.org") "Front End")
+         "* %?\t:%^{language}:\n#+BEGIN_SRC %\\1\n\n#+END_SRC")
+
+        ("g" "Code Snippet[Go]" entry
+         (file+headline (concat org-directory "/snippets.org") "Go")
+         "* %?\t:golang:\n#+BEGIN_SRC go\n\n#+END_SRC")
+
+        ("p" "Code Snippet[Python]" entry
+         (file+headline (concat org-directory "/snippets.org") "Python")
+         "* %?\t:python:\n#+BEGIN_SRC python\n\n#+END_SRC")
+
+        ("j" "Code Snippet[Javascript]" entry
+         (file+headline (concat org-directory "/snippets.org") "Javascript")
+         "* %?\t:javascript:\n#+BEGIN_SRC javascript\n\n#+END_SRC")
+
+        ("o" "Code Snippet[Other]" entry
+         (file+headline (concat org-directory "/snippets.org") "Other")
+         "* %?\t\n#+BEGIN_SRC %^{language}\n\n#+END_SRC")
       )
     ))
  )

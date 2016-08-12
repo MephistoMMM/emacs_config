@@ -1,0 +1,18 @@
+# -*- mode: snippet -*-
+# name: init_go
+# key: i_go
+# --
+/* Package ${1:pkg name} provide ${2:...}
+ *
+ * Author: Mephis Pheies ( MephistoMMM )
+ * Email: mephistommm@gmail.com
+ *
+ * License:
+ * ${3:MIT License}
+ *
+ * Commentary:
+ * ${4:details Description}
+ */
+package  $1
+
+$0

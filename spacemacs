@@ -40,6 +40,7 @@ values."
      ;; Catalogue: tools
      colors ;; use spc t C c to show css colors
      markdown
+     dockerfile
      (ranger :variables
              ranger-show-preview t)
      (shell :variables
@@ -65,7 +66,6 @@ values."
      ;; Ready: cabal install stylish-haskell hlint hasktags ghc-mod
      react
      go
-     html
 
      ;; Catalogue: self layers
      mp-org
@@ -83,8 +83,7 @@ values."
                          company-tern cython-mode gnuplot
                          anaconda-eldoc-mode anaconda-mode company-anaconda
                          neotree nyan-mode smartparens  company-emoji
-                         spacemacs-theme mmm-mode
-                         org-mime message-moe)
+                         spacemacs-theme mmm-mode org-mime message-moe)
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
    ;; are declared in a layer which is not a member of
    ;; the list `dotspacemacs-configuration-layers'. (default t)
@@ -278,11 +277,21 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
-    ;; loading myself themes before init over
-    (push "~/.emacs.d/private/themes/gruvbox/" load-path)
-    (push "~/.emacs.d/private/configs/" load-path)
-    (require 'gruvbox-theme)
-    (load-theme 'gruvbox)
+  (setq configuration-layer--elpa-archives
+        '(("melpa-cn" . "https://elpa.zilongshanren.com/melpa/")
+          ("org-cn"   . "https://elpa.zilongshanren.com/org/")
+          ("gnu-cn"   . "https://elpa.zilongshanren.com/gnu/")))
+
+  ;; loading myself themes before init over
+  (push "~/.emacs.d/private/themes/gruvbox/" load-path)
+  (push "~/.emacs.d/private/configs/" load-path)
+  (require 'gruvbox-theme)
+  (load-theme 'gruvbox)
+
+  ;; clean env error while starting
+  (if (and (eq system-type 'darwin) (display-graphic-p))
+      (when (string-match-p "/zsh$" (getenv "SHELL"))
+        (setq exec-path-from-shell-arguments '("-l"))))
   )
 
 (defun dotspacemacs/user-config ()
@@ -320,7 +329,6 @@ you should place your code here."
   (mp-hacking/hacking-keybinding-init)
 )
 
-;; TODO: config for programming
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
 (custom-set-variables
@@ -333,7 +341,7 @@ you should place your code here."
  '(company-etags-ignore-case nil)
  '(custom-safe-themes
    (quote
-    ("71ac396c61776675125d3e5a33b3f20152487622cc5f8af367b31a2191714e6f" default)))
+    ("dbaf3313f4c41544f720d4351810e15278b8057cbd6b9d6e1e2bf94b2b114e84" default)))
  '(paradox-github-token t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

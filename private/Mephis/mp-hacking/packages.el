@@ -15,6 +15,7 @@
                                     :fetcher github
                                     :repo "MephistoMMM/leave-delimited"))
         haskell-mode
+        company-jedi
         web-mode
         auto-complete
         writeroom-mode
@@ -22,6 +23,14 @@
         ;; flycheck
         flycheck
         ))
+
+(defun mp-hacking/init-company-jedi ()
+  "Add company-jedi to python company-backend."
+  (use-package company-jedi
+    :defer t
+    :init
+    (add-hook 'python-mode-hook
+              (lambda () (add-to-list 'company-backends-python-mode 'company-jedi)))))
 
 (defun mp-hacking/post-init-haskell-mode ()
   "Add haskell cabal bin path to 'exec-path."

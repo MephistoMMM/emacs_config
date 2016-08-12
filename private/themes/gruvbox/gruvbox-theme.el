@@ -41,6 +41,37 @@
   (error "Requires Emacs 24 or later"))
 
 (deftheme gruvbox "A retro-groove colour theme")
+
+(defcustom gruvbox-use-variable-pitch t
+  "Use variable pitch face for some headings and titles."
+  :type 'boolean
+  :group 'gruvbox)
+
+(defcustom gruvbox-height-minus-1 0.8
+  "Font size -1."
+  :type 'number
+  :group 'gruvbox)
+
+(defcustom gruvbox-height-plus-1 1.1
+  "Font size +1."
+  :type 'number
+  :group 'gruvbox)
+
+(defcustom gruvbox-height-plus-2 1.25
+  "Font size +2."
+  :type 'number
+  :group 'gruvbox)
+
+(defcustom gruvbox-height-plus-3 1.4
+  "Font size +3."
+  :type 'number
+  :group 'gruvbox)
+
+(defcustom gruvbox-height-plus-4 1.5
+  "Font size +4."
+  :type 'number
+  :group 'gruvbox)
+
 (let ((gruvbox-dark0_hard  (if (display-graphic-p) "#1d2021" "color-234"))
       ;; change dark0 235 to 233
       (gruvbox-dark0       (if (display-graphic-p) "#121212" "color-233"))
@@ -64,7 +95,7 @@
       (gruvbox-bright_red     (if (display-graphic-p) "#fb4933" "color-167"))
       (gruvbox-bright_green   (if (display-graphic-p) "#b8bb26" "color-142"))
       (gruvbox-bright_yellow  (if (display-graphic-p) "#fabd2f" "color-214"))
-      (gruvbox-bright_blue    (if (display-graphic-p) "#83a598" "color-109"))
+      (gruvbox-bright_blue    (if (display-graphic-p) "#87afaf" "color-109"))
       (gruvbox-bright_purple  (if (display-graphic-p) "#d3869b" "color-175"))
       (gruvbox-bright_aqua    (if (display-graphic-p) "#8ec07c" "color-108"))
       (gruvbox-bright_orange  (if (display-graphic-p) "#fe8019" "color-208"))
@@ -137,6 +168,15 @@
     `(whitespace-indentation            ((t (:background ,gruvbox-dark0 :foreground ,gruvbox-dark4))))
     `(whitespace-empty                  ((t (:background nil :foreground nil))))
     `(whitespace-space-after-tab        ((t (:background ,gruvbox-dark0 :foreground ,gruvbox-dark4))))
+
+    ;; markdown-mode
+    `(markdown-header-delimiter-face ((t (:inherit font-lock-function-name-face :underline t :weight bold))) t)
+    `(markdown-header-face-1 ((t (:inherit markdown-header-face :height ,gruvbox-height-plus-4))) t)
+    `(markdown-header-face-2 ((t (:inherit markdown-header-face :height ,gruvbox-height-plus-3))) t)
+    `(markdown-header-face-3 ((t (:inherit markdown-header-face :underline t :height ,gruvbox-height-plus-2))) t)
+    `(markdown-header-face-4 ((t (:inherit markdown-header-face :underline t :height ,gruvbox-height-plus-1))) t)
+    `(markdown-header-face-5 ((t (:inherit markdown-header-face :underline t))) t)
+    `(markdown-header-face-6 ((t (:inherit markdown-header-face :underline t))) t)
 
     ;; RainbowDelimiters
     `(rainbow-delimiters-depth-1-face   ((t (:foreground ,gruvbox-delimiter-one))))

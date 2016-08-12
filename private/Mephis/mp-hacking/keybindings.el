@@ -28,6 +28,8 @@
   ;; Expand
   (define-key evil-normal-state-map (kbd "e") 'er/expand-region)
   (define-key evil-visual-state-map (kbd "e") 'er/expand-region)
+  (define-key evil-normal-state-map (kbd "E") 'er/contract-region)
+  (define-key evil-visual-state-map (kbd "E") 'er/contract-region)
 
   ;; Jump out from pairs
   (define-key evil-insert-state-map (kbd "C-'") 'ar-leave-delimited-forward)
