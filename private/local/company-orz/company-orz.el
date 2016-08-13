@@ -12,6 +12,7 @@
 ;;; Commentary:
 
 ;; A sample company back and for my orz emoji.
+;; http://sixty-north.com/blog/writing-the-simplest-emacs-company-mode-backend
 ;; TODO: more fast!
 
 ;;; Code:
@@ -38,11 +39,10 @@
 
 ;; the actual code things
 
-(defun company-orz--create-list ()
-  "Return the propertized list of orz str."
 ;; See
 ;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Text-Props-and-Strings.html
 ;; for the syntax.
+(defconst company-orz-list
   (list
     #(":exciting:" 0 1 (:unicode "o(≧∇≦o)"))
     #(":exciting_right:" 0 1 (:unicode "(/ ^▽^)/"))
@@ -82,27 +82,24 @@ candidates that match what has been typed so far.  Sometimes ARG
 is a single candidate, as when COMMAND is 'annotation' or
 'post-completion'.  Other arguments are IGNORED."
 
-  ;; First, update the list of candidates by adding the custom
-  ;; aliases:
-  (let ((orz-list (company-orz--create-list)))
-    (cl-case command
-      ;; 'prefix' has too many meanings in emacs lisp but here we're
-      ;; specifying what the string we're completing should begin with
-      (prefix (company-grab "\:[a-zA-Z0-9-_]*"))
-      (candidates
-       ;; filter based on what's already been typed
-       (cl-remove-if-not
-        (lambda (c) (string-prefix-p arg c))
-        orz-list))
-      ;; show the real orz alongside its name in the completion list
-      (annotation (company-orz--annotation arg))
-      ;; when we find the orz we want, replace it with the real orz
-      ;; (assuming company-orz-insert-unicode is set to true)
-      (post-completion
-       (if company-orz-insert-unicode
-           (progn
-             (kill-region (- (point) (length arg)) (point))
-             (insert (get-text-property 0 :unicode arg))))))))
+  (cl-case command
+    ;; 'prefix' has too many meanings in emacs lisp but here we're
+    ;; specifying what the string we're completing should begin with
+    (prefix (company-grab "\:[a-zA-Z0-9-_]*"))
+    (candidates
+      ;; filter based on what's already been typed
+      (cl-remove-if-not
+      (lambda (c) (string-prefix-p arg c))
+      company-orz-list))
+    ;; show the real orz alongside its name in the completion list
+    (annotation (company-orz--annotation arg))
+    ;; when we find the orz we want, replace it with the real orz
+    ;; (assuming company-orz-insert-unicode is set to true)
+    (post-completion
+      (if company-orz-insert-unicode
+          (progn
+            (kill-region (- (point) (length arg)) (point))
+            (insert (get-text-property 0 :unicode arg)))))))
 
 ;;;###autoload
 (defun company-orz-init ()
