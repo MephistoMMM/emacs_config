@@ -12,36 +12,8 @@
 (defconst mp-ui-packages
   '(
     linum-relative
-    sublimity
     ranger)
  )
-
-(defun mp-ui/init-sublimity ()
-  "Sublimity mode - I want to try the map of sublimity"
-  (use-package sublimity
-    :defer t
-    :init
-    (spacemacs|add-toggle sublimity
-      :status sublimity-mode
-      :on
-      (sublimity-mode)
-      :off
-      (sublimity-mode -1)
-      :documentation "Open a Minimap for buffer!")
-    )
-  (spacemacs/set-leader-keys "tM" 'spacemacs/toggle-sublimity)
-  )
-
-(defun mp-ui/post-init-sublimity ()
-  "Sublimity map and attractive"
-  (with-eval-after-load 'sublimity
-    (use-package sublimity-map
-      :config
-      (setq sublimity-map-size 20)
-      (setq sublimity-map-fraction 0.3)
-      (sublimity-map-set-delay 0.3))
-    )
-  )
 
 (defun mp-ui/post-init-ranger ()
   "Configuations for ranger!"
