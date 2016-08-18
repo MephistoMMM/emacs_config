@@ -33,7 +33,8 @@ values."
                       auto-completion-enable-snippets-in-popup t
                       auto-completion-private-snippets-directory "~/.emacs.d/private/snippets/")
      git
-     spell-checking
+     (spell-checking :variables
+                     spell-checking-enable-by-default nil)
      (syntax-checking :variables
                       syntax-checking-enable-by-default t)
 
@@ -61,13 +62,14 @@ values."
      (python :variables
              python-enable-yapf-format-on-save t
              python-test-runner 'pytest)
-     ;; Ready: npm install eslint
+     ;; Ready: npm install eslint;; brew install tern
      javascript
      ;; Ready: cabal install stylish-haskell hlint hasktags ghc-mod
      react
      go
 
      ;; Catalogue: self layers
+     mp-ui
      mp-org
      mp-hacking
      )
@@ -304,27 +306,12 @@ you should place your code here."
   ;; dotspacemacs-search-tools: ag
   ;; install ag first!
 
-  ;;line number
-  (spacemacs/toggle-line-numbers-on)
-  (unless (display-graphic-p)
-    (setq linum-relative-format "%3s "))
-  ;; Spaceline
-  (require 'self-spaceline-config)
-  (spaceline-self-theme)
-  (setq powerline-default-separator 'wave)
-  (setq ns-use-srgb-colorspace nil)
-  (spaceline-compile);; this bug will be fixed
-  ;; Ranger
-  (setq ranger-ignored-extensions '("mkv" "iso" "mp4"))
-  (setq ranger-max-preview-size 2)
-  ;; Parens
-  (electric-pair-mode t)
-  (show-paren-mode t)
-  ;; Tab
-  (setq tab-always-indent nil)
-  ;; Tern modeline
-  (diminish 'tern-mode "\u24e3")
+  ;; debug on error!
+  ;; c d e q
+  (setq debug-on-error t)
 
+  (mp-ui/better-default)
+  (mp-org/better-default)
   (mp-hacking/better-default)
   (mp-hacking/hacking-keybinding-init)
 )
@@ -341,7 +328,7 @@ you should place your code here."
  '(company-etags-ignore-case nil)
  '(custom-safe-themes
    (quote
-    ("dbaf3313f4c41544f720d4351810e15278b8057cbd6b9d6e1e2bf94b2b114e84" default)))
+    ("2ff99812cddf171ea59ac3b458fd79faac7f0de2bdabefb49ca97b30ef5e5060" default)))
  '(paradox-github-token t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

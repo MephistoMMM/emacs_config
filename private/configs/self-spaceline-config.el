@@ -2,8 +2,7 @@
 
 ;; This file is not part of GNU Emacs.
 
-;; Changer: Mephis Pheies
-;; Email: mephistomm@gmail.com
+;; Changer: Mephis Pheies mephistomm@gmail.com
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -65,6 +64,7 @@
 
   (setq-default mode-line-format '("%e" (:eval (spaceline-ml-main)))))
 
+;;;###autoload
 (defun spaceline-self-theme (&rest additional-segments)
   "Install the modeline used by Spacemacs.
 

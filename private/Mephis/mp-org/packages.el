@@ -39,6 +39,7 @@
    mrg-directory-path "~/Dropbox/mrg"
    markdown-enable-math t)
   (spacemacs/set-leader-keys "am" 'mp-org/create-mrg-buffer)
+
   )
 
 (defun mp-org/post-init-org-agenda ()
@@ -50,7 +51,13 @@
 
 (defun mp-org/post-init-org ()
   "Configurations for org mode"
-  (add-hook 'org-mode-hook (lambda () (spacemacs/toggle-line-numbers-off)) 'append)
+  (add-hook 'org-mode-hook (lambda ()
+                             (if org-descriptive-links
+                                 (progn (org-remove-from-invisibility-spec '(org-link))
+                                        (org-restart-font-lock)
+                                        (setq org-descriptive-links nil)))
+                             (setq truncate-lines nil)
+                             (spacemacs/toggle-line-numbers-off)) 'append)
   (with-eval-after-load 'org
     (setq org-directory "~/Dropbox/org")
     (org-babel-do-load-languages
@@ -74,11 +81,11 @@
       org-footnote-auto-adjust t
       org-footnote-auto-label 'confirm
 
-      org-link-abbrev-alist
-      '(("github"    . "https://github.com")
-        ("codewars"  . "https://www.codewars.com")
-        ("bili"      . "http://www.bilibili.com")
-        ("spacemacs" . "http://spacemacs.org"))
+      ;; org-link-abbrev-alist
+      ;; '(("github"    . "https://github.com")
+      ;;   ("codewars"  . "https://www.codewars.com")
+      ;;   ("bili"      . "http://www.bilibili.com")
+      ;;   ("spacemacs" . "http://spacemacs.org"))
 
       org-modules
       '(org-bbdb org-habit org-info org-irc org-w3m org-mac-link org-protocol)
@@ -104,8 +111,8 @@
          :empty-lines 1)
 
         ("n" "Quick Notes" entry
-         (file+headline (concat org-directory "/Notes.org"))
-         "* %?\n  %i\n\n%a\n%U"
+         (file+headline (concat org-directory "/Notes.org") "Quick Notes")
+         "* %?\n  %i%a\n%U"
          :empty-lines 1)
 
         ("b" "Technical Notes" entry ; big note

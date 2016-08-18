@@ -9,18 +9,6 @@
 
 ;;; Code:
 
-(defun mp-hacking/toggle-writeroom-mode ()
-  "Line number will affect the work of writeroom, making it fail to centrel text.  So, let us close it first!"
-  (interactive)
-  (if writeroom-mode
-    (progn ; t
-      (spacemacs/toggle-writeroom-off)
-      (spacemacs/toggle-line-numbers-on))
-    (progn ; nil
-      (spacemacs/toggle-line-numbers-off)
-      (spacemacs/toggle-writeroom-on)))
-  )
-
 (defun mp-hacking/better-default ()
   "This function set many default config to more better!
 Some configurations should be written at here which be unable to config

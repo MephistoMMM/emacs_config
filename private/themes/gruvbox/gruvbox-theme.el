@@ -154,7 +154,7 @@
     `(font-lock-keyword-face            ((t (:foreground ,gruvbox-bright_red))))
     `(font-lock-string-face             ((t (:foreground ,gruvbox-bright_green))))
     `(font-lock-variable-name-face      ((t (:foreground ,gruvbox-bright_blue))))
-    `(font-lock-type-face               ((t (:foreground ,gruvbox-bright_purple))))
+    `(font-lock-type-face               ((t (:foreground ,gruvbox-bright_aqua))))
     `(font-lock-warning-face            ((t (:foreground ,gruvbox-bright_red :bold t))))
 
     ;; whitespace-mode

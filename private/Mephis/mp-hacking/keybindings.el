@@ -35,10 +35,6 @@
   (define-key evil-insert-state-map (kbd "C-'") 'ar-leave-delimited-forward)
   (define-key evil-normal-state-map (kbd "C-'") 'ar-leave-delimited-forward)
 
-  ;; WriteRoom
-  (spacemacs/set-leader-keys "wr" 'mp-hacking/toggle-writeroom-mode) ; comment toggle
-
-
   ;; Scroll
   ;; Enable mouse support
   (unless window-system

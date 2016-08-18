@@ -18,7 +18,6 @@
         company-jedi
         web-mode
         auto-complete
-        writeroom-mode
         js2-mode
         ;; flycheck
         flycheck
@@ -56,30 +55,6 @@ http://auto-complete.org/doc/manual.html#ignore-case"
   (with-eval-after-load 'auto-complete
     (setq ac-ignore-case 'smart)))
 
-
-(defun mp-hacking/init-writeroom-mode ()
-  "Free writing mode - focus your code."
-  (use-package writeroom-mode
-    :init
-    (spacemacs|add-toggle writeroom
-      :status writeroom-mode
-      :on (writeroom-mode)
-      :off (writeroom-mode -1)
-      :documentation "Free writing mode - focus your code")
-    ))
-
-(defun mp-hacking/post-init-writeroom-mode ()
-  "Config base variables and bind keys in writeroom-mode."
-  (with-eval-after-load 'writeroom-mode
-    (progn
-      (setq writeroom-restore-window-config t)
-      (setq writeroom-restore-window-config t)
-      (setq writeroom-width 80)
-      (define-key writeroom-mode-map (kbd "C-M-<") #'writeroom-decrease-width)
-      (define-key writeroom-mode-map (kbd "C-M->") #'writeroom-increase-width)
-      (define-key writeroom-mode-map (kbd "C-M-=") #'writeroom-adjust-width)
-    ))
-  )
 
 (defun mp-hacking/init-leave-delimited ()
   "Let us be free to  go out of parens."

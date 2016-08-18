@@ -20,4 +20,18 @@
     (setq default-directory mrg-directory-path)
   )
 
+(defun mp-org/better-default ()
+  "Better default for mp-org, something done in
+user-config should be defined in this function!"
+
+  ;; mrg layout
+  ;; https://github.com/syl20bnr/spacemacs/tree/master/layers/%2Bwindow-management/spacemacs-layouts
+  (when (fboundp 'spacemacs|define-custom-layout)
+    (spacemacs|define-custom-layout "mrg layout"
+      :binding "m"
+      :body
+      (find-file (concat mrg-directory-path "/index.md")))
+    )
+  )
+
 ;;; mp-org/funcs.el ends here
