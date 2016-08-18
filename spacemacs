@@ -311,8 +311,6 @@ you should place your code here."
   (setq debug-on-error t)
 
   (mp-ui/better-default)
-  (mp-org/better-default)
-  (mp-hacking/better-default)
   (mp-hacking/hacking-keybinding-init)
 )
 

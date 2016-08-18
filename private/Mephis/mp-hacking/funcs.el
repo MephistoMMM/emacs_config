@@ -13,9 +13,6 @@
   "This function set many default config to more better!
 Some configurations should be written at here which be unable to config
 in 'with-eval-after-load."
-  ;; Python
-  (setq python-shell-interpreter "python3")
-  (remove-hook 'python-mode-hook 'spacemacs//init-eldoc-python-mode)
   )
 
 (defun mp-hacking/hide-js2-checks-if-flycheck-active ()

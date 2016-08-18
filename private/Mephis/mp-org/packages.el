@@ -39,7 +39,14 @@
    mrg-directory-path "~/Dropbox/mrg"
    markdown-enable-math t)
   (spacemacs/set-leader-keys "am" 'mp-org/create-mrg-buffer)
-
+  ;; mrg layout
+  ;; https://github.com/syl20bnr/spacemacs/tree/master/layers/%2Bwindow-management/spacemacs-layouts
+  (when (fboundp 'spacemacs|define-custom-layout)
+    (spacemacs|define-custom-layout "mrg layout"
+      :binding "m"
+      :body
+      (find-file (concat mrg-directory-path "/index.md")))
+    )
   )
 
 (defun mp-org/post-init-org-agenda ()

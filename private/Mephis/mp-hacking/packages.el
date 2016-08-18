@@ -16,6 +16,7 @@
                                     :repo "MephistoMMM/leave-delimited"))
         haskell-mode
         company-jedi
+        python
         web-mode
         auto-complete
         js2-mode
@@ -23,13 +24,21 @@
         flycheck
         ))
 
+(defun mp-hacking/post-init-python ()
+  "Toggle the indent guide"
+    (add-hook 'python-mode-hook
+              (lambda () (spacemacs/toggle-indent-guide-on)))
+    (add-hook 'python-mode-hook
+              (lambda () (add-to-list 'company-backends-python-mode 'company-jedi)))
+    (setq python-shell-interpreter "python3")
+    (remove-hook 'python-mode-hook 'spacemacs//init-eldoc-python-mode)
+  )
+
 (defun mp-hacking/init-company-jedi ()
   "Add company-jedi to python company-backend."
   (use-package company-jedi
-    :defer t
-    :init
-    (add-hook 'python-mode-hook
-              (lambda () (add-to-list 'company-backends-python-mode 'company-jedi)))))
+    :defer t)
+  )
 
 (defun mp-hacking/post-init-haskell-mode ()
   "Add haskell cabal bin path to 'exec-path."
