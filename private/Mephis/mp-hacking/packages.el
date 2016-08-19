@@ -26,10 +26,8 @@
 
 (defun mp-hacking/post-init-python ()
   "Toggle the indent guide"
-    (add-hook 'python-mode-hook
-              (lambda () (spacemacs/toggle-indent-guide-on)))
-    (add-hook 'python-mode-hook
-              (lambda () (add-to-list 'company-backends-python-mode 'company-jedi)))
+    (add-hook 'python-mode-hook 'indent-guide-mode)
+    (add-to-list 'company-backends-python-mode 'company-jedi)
     (setq python-shell-interpreter "python3")
     (remove-hook 'python-mode-hook 'spacemacs//init-eldoc-python-mode)
   )
