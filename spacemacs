@@ -314,5 +314,5 @@ you should place your code here."
   (mp-hacking/hacking-keybinding-init)
 )
 
-(setq custom-file (expand-file-name "custom.el" dotspacemacs-directory))
+(setq custom-file "~/.emacs.d/private/configs/custom.el") 
 (load custom-file 'no-error 'no-message)
