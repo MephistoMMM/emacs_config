@@ -14,6 +14,9 @@
         (leave-delimited :location (recipe
                                     :fetcher github
                                     :repo "MephistoMMM/leave-delimited"))
+        (string-inflection :location (recipe
+                                    :fetcher github
+                                    :repo "MephistoMMM/string-inflection"))
         haskell-mode
         company-jedi
         python
@@ -23,6 +26,23 @@
         ;; flycheck
         flycheck
         ))
+
+(defun mp-hacking/init-string-inflection ()
+  "Bind keys for string inflection,Want to turn fooBar into foo_bar? Press crs
+(coerce to snake_case). MixedCase (sim), camelCase (sic), snake_case (sis), lisp_case (sil)
+and UPPER_CASE (siu) are all just 3 keystrokes away."
+  ;;TODO: let lisp case could back to snake_case or others.
+  (use-package string-inflection
+    :defer t
+    :init
+    (spacemacs/declare-prefix "si" "string-inflection")
+    (spacemacs/set-leader-keys "sis" 'string-inflection-underscore)
+    (spacemacs/set-leader-keys "sim" 'string-inflection-camelcase)
+    (spacemacs/set-leader-keys "sic" 'string-inflection-lower-camelcase)
+    (spacemacs/set-leader-keys "siu" 'string-inflection-upcase)
+    (spacemacs/set-leader-keys "sil" 'string-inflection-lisp)
+    )
+  )
 
 (defun mp-hacking/post-init-python ()
   "Toggle the indent guide"
@@ -74,9 +94,6 @@ http://auto-complete.org/doc/manual.html#ignore-case"
 
 (defun mp-hacking/post-init-js2-mode ()
   "Add a series of default configuration fo js2-mode"
-  (add-hook 'js2-mode-hook (lambda ()
-                             (when (configuration-layer/package-usedp 'flycheck-mode)
-                               (flycheck-mode 1))))
   (with-eval-after-load 'js2-mode
     (progn
       ;; these mode related variables must be in eval-after-load
