@@ -9,6 +9,7 @@
 
 ;;; Code:
 
-
+(setq self-evil-play-operator-alist
+      '((evil-change . c) (evil-delete . d)))
 
 ;;; mp-hacking/config.el ends

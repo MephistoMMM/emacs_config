@@ -35,12 +35,11 @@ and UPPER_CASE (siu) are all just 3 keystrokes away."
   (use-package string-inflection
     :defer t
     :init
-    (spacemacs/declare-prefix "si" "string-inflection")
-    (spacemacs/set-leader-keys "sis" 'string-inflection-underscore)
-    (spacemacs/set-leader-keys "sim" 'string-inflection-camelcase)
-    (spacemacs/set-leader-keys "sic" 'string-inflection-lower-camelcase)
-    (spacemacs/set-leader-keys "siu" 'string-inflection-upcase)
-    (spacemacs/set-leader-keys "sil" 'string-inflection-lisp)
+    (self-evil-play-define-key "crs" 'string-inflection-underscore)
+    (self-evil-play-define-key "crm" 'string-inflection-camelcase)
+    (self-evil-play-define-key "crc" 'string-inflection-lower-camelcase)
+    (self-evil-play-define-key "cru" 'string-inflection-upcase)
+    (self-evil-play-define-key "crl" 'string-inflection-lisp)
     )
   )
 
