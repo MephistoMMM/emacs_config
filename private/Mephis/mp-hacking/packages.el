@@ -21,6 +21,7 @@
         company-jedi
         python
         web-mode
+        flycheck
         auto-complete
         js2-mode
         ;; flycheck
@@ -40,6 +41,14 @@ and UPPER_CASE (siu) are all just 3 keystrokes away."
     (self-evil-play-define-key "crc" 'string-inflection-lower-camelcase)
     (self-evil-play-define-key "cru" 'string-inflection-upcase)
     (self-evil-play-define-key "crl" 'string-inflection-lisp)
+    )
+  )
+
+(defun mp-hacking/post-init-flycheck ()
+  "change flycheck-checker"
+  (with-eval-after-load 'flycheck
+    (add-to-list 'flycheck-disabled-checkers 'go-gofmt)
+    (add-to-list 'flycheck-disabled-checkers 'go-errcheck)
     )
   )
 
@@ -93,6 +102,8 @@ http://auto-complete.org/doc/manual.html#ignore-case"
 
 (defun mp-hacking/post-init-js2-mode ()
   "Add a series of default configuration fo js2-mode"
+  (add-hook 'js2-mode-hook (lambda ()
+                             (spacemacs/toggle-syntax-checking-off)))
   (with-eval-after-load 'js2-mode
     (progn
       ;; these mode related variables must be in eval-after-load
