@@ -85,7 +85,7 @@
       (gruvbox-medium      (if (display-graphic-p) "#928374" "color-245")) ;; or 244
 
       (gruvbox-light0_hard (if (display-graphic-p) "#ffffc8" "color-230"))
-      (gruvbox-light0      (if (display-graphic-p) "#fdf4c1" "color-229"))
+      (gruvbox-light0      (if (display-graphic-p) "#efe1bf" "color-229"))
       (gruvbox-light0_soft (if (display-graphic-p) "#f4e8ba" "color-228"))
       (gruvbox-light1      (if (display-graphic-p) "#ebdbb2" "color-223"))
       (gruvbox-light2      (if (display-graphic-p) "#d5c4a1" "color-250"))

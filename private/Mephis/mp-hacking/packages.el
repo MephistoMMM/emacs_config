@@ -24,8 +24,7 @@
         flycheck
         auto-complete
         js2-mode
-        ;; flycheck
-        flycheck
+        go-mode
         ))
 
 (defun mp-hacking/init-string-inflection ()
@@ -44,8 +43,8 @@ and UPPER_CASE (siu) are all just 3 keystrokes away."
     )
   )
 
-(defun mp-hacking/post-init-flycheck ()
-  "change flycheck-checker"
+(defun mp-hacking/post-init-go-mode ()
+  "change flycheck-disabled-checkers"
   (with-eval-after-load 'flycheck
     (add-to-list 'flycheck-disabled-checkers 'go-gofmt)
     (add-to-list 'flycheck-disabled-checkers 'go-errcheck)
@@ -56,7 +55,6 @@ and UPPER_CASE (siu) are all just 3 keystrokes away."
   "Toggle the indent guide"
     (add-hook 'python-mode-hook 'indent-guide-mode)
     (add-to-list 'company-backends-python-mode 'company-jedi)
-    (setq python-shell-interpreter "python3")
     (remove-hook 'python-mode-hook 'spacemacs//init-eldoc-python-mode)
   )
 

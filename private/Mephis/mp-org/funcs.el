@@ -24,6 +24,10 @@
   "Better default for mp-org, something done in
 user-config should be defined in this function!"
 
+  ;; Count Words
+  (spacemacs/set-leader-keys "xC" 'count-words)
+  ;; Fill Region
+  (spacemacs/set-leader-keys "xf" 'fill-region)
   )
 
 ;;; mp-org/funcs.el ends here

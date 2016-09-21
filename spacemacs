@@ -33,6 +33,7 @@ values."
                       auto-completion-enable-snippets-in-popup t
                       auto-completion-private-snippets-directory "~/.emacs.d/private/snippets/")
      git
+     semantic
      (spell-checking :variables
                      spell-checking-enable-by-default nil)
      (syntax-checking :variables
@@ -138,8 +139,10 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(gruvbox
-                         monokai)
+   dotspacemacs-themes '(spacemacs-light
+                         monokai
+                         ;; gruvbox
+                         )
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
@@ -278,16 +281,18 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
-  (setq configuration-layer--elpa-archives
-        '(("melpa-cn" . "https://elpa.zilongshanren.com/melpa/")
-          ("org-cn"   . "https://elpa.zilongshanren.com/org/")
-          ("gnu-cn"   . "https://elpa.zilongshanren.com/gnu/")))
+  ;; (setq configuration-layer--elpa-archives
+  ;;       '(("melpa-cn" . "https://elpa.zilongshanren.com/melpa/")
+  ;;         ("org-cn"   . "https://elpa.zilongshanren.com/org/")
+  ;;         ("gnu-cn"   . "https://elpa.zilongshanren.com/gnu/")))
 
   ;; loading myself themes before init over
-  (push "~/.emacs.d/private/themes/gruvbox/" load-path)
   (push "~/.emacs.d/private/configs/" load-path)
-  (require 'gruvbox-theme)
-  (load-theme 'gruvbox)
+
+  ;; myself themes -- gruvbox!
+  ;; (push "~/.emacs.d/private/themes/gruvbox/" load-path)
+  ;; (require 'gruvbox-theme)
+  ;; (load-theme 'gruvbox)
 
   ;; clean env error while starting
   (if (and (eq system-type 'darwin) (display-graphic-p))
@@ -307,9 +312,10 @@ you should place your code here."
 
   ;; debug on error!
   ;; c d e q
-  (setq debug-on-error t)
+  ;; (setq debug-on-error t)
 
   (mp-ui/better-default)
+  (mp-org/better-default)
   (mp-hacking/hacking-keybinding-init)
 )
 
