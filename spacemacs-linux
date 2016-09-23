@@ -52,6 +52,7 @@ values."
      (org :variables
           org-enable-github-support t)
      ;; version-control
+     games
 
      ;; Catalogue: language
      emacs-lisp
@@ -138,9 +139,10 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(gruvbox
+   dotspacemacs-themes '(spacemacs-light
                          monokai
-                        )
+                         ;; gruvbox
+                         )
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
@@ -285,10 +287,11 @@ before packages are loaded. If you are unsure, you should try in setting them in
           ("gnu-cn"   . "https://elpa.zilongshanren.com/gnu/")))
 
   ;; loading myself themes before init over
-  (push "~/.emacs.d/private/themes/gruvbox/" load-path)
   (push "~/.emacs.d/private/configs/" load-path)
-  (require 'gruvbox-theme)
-  (load-theme 'gruvbox)
+
+  ;; (push "~/.emacs.d/private/themes/gruvbox/" load-path)
+  ;; (require 'gruvbox-theme)
+  ;; (load-theme 'gruvbox)
 
   ;; clean env error while starting
   (if (and (eq system-type 'darwin) (display-graphic-p))
