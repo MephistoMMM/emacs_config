@@ -2,17 +2,7 @@
 # name: init_go
 # key: i_go
 # --
-/* Package ${1:pkg name} provide ${2:...}
- *
- * Author: Mephis Pheies ( MephistoMMM )
- * Email: mephistommm@gmail.com
- *
- * License:
- * ${3:MIT License}
- *
- * Commentary:
- * ${4:details Description}
- */
+// Package ${1:pkg name} provide ${2:...}
 package  $1
 
 $0

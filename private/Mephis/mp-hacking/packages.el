@@ -45,10 +45,10 @@ and UPPER_CASE (siu) are all just 3 keystrokes away."
 
 (defun mp-hacking/post-init-go-mode ()
   "change flycheck-disabled-checkers"
-  (with-eval-after-load 'flycheck
-    (add-to-list 'flycheck-disabled-checkers 'go-gofmt)
-    (add-to-list 'flycheck-disabled-checkers 'go-errcheck)
-    )
+  (add-hook 'flycheck-mode-hook (lambda ()
+                                  (add-to-list 'flycheck-disabled-checkers 'go-gofmt)
+                                  (add-to-list 'flycheck-disabled-checkers 'go-errcheck)
+                                  ))
   )
 
 (defun mp-hacking/post-init-python ()
