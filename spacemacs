@@ -56,7 +56,10 @@ values."
 
      ;; Catalogue: tools
      colors ;; use spc t C c to show css colors
+     ;;theming ;;http://spacemacs.org/layers/+themes/theming/README.html
+     imenu-list
      markdown
+     docker
      (ranger :variables
              ranger-show-preview t)
      (shell :variables

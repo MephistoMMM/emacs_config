@@ -25,6 +25,9 @@
   ;; Buffer
   (spacemacs/set-leader-keys "bt" 'evil-buffer-new) ; new buffer
 
+  ;; Window
+  (spacemacs/set-leader-keys "wc" 'delete-window) ; delete window
+
   ;; Expand
   (define-key evil-normal-state-map (kbd "e") 'er/expand-region)
   (define-key evil-visual-state-map (kbd "e") 'er/expand-region)
