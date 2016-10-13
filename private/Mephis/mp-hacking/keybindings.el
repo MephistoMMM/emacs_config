@@ -56,6 +56,11 @@
   (spacemacs/set-leader-keys "hyl" 'yas-load-snippet-buffer)              ;;hacking yasnippet load
   (spacemacs/set-leader-keys "hyc" 'yas-load-snippet-buffer-and-close)    ;;hacking yasnippet load and close
   (spacemacs/set-leader-keys "hyv" 'yas-visit-snippet-file)               ;;hacking yasnippet visit file
+
+  ;; Themes auto change
+  (spacemacs/declare-prefix "at" "themes auto change")
+  (spacemacs/set-leader-keys "ato" 'mp-ui/open-themes-auto-change)
+  (spacemacs/set-leader-keys "atc" 'mp-ui/close-themes-auto-change)
   )
 
 ;;; keybindings.el ends here
