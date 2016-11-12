@@ -47,6 +47,9 @@
       :body
       (find-file (concat mrg-directory-path "/index.md")))
     )
+
+  ;; for bluprinfile (apib)
+  (add-to-list 'auto-mode-alist '("\\.apib\\'" . markdown-mode))
   )
 
 (defun mp-org/post-init-org-agenda ()

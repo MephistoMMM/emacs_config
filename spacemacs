@@ -73,7 +73,6 @@ values."
 
      ;; Catalogue: language
      emacs-lisp
-     haskell
      html
      shell-scripts
      ;; Ready: pip install six pylint pytest yapf jedi json-rpc service_factory
@@ -82,7 +81,9 @@ values."
              python-test-runner 'pytest)
      ;; Ready: npm install eslint;; brew install tern
      javascript
+     c-c++
      ;; Ready: cabal install stylish-haskell hlint hasktags ghc-mod
+     haskell
      react
      go
 
@@ -345,11 +346,6 @@ before packages are loaded. If you are unsure, you should try in setting them in
 
   ;; loading myself themes before init over
   (push "~/.emacs.d/private/configs/" load-path)
-
-  ;; myself themes -- gruvbox!
-  ;; (push "~/.emacs.d/private/themes/gruvbox/" load-path)
-  ;; (require 'gruvbox-theme)
-  ;; (load-theme 'gruvbox)
 
   ;; clean env error while starting
   (if (and (eq system-type 'darwin) (display-graphic-p))

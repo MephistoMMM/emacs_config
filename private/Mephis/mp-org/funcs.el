@@ -27,7 +27,8 @@ user-config should be defined in this function!"
   ;; Count Words
   (spacemacs/set-leader-keys "xC" 'count-words)
   ;; Fill Region
-  (spacemacs/set-leader-keys "xf" 'fill-region)
+  ;; (spacemacs/set-leader-keys "xf" 'fill-region)
+  ;; This function is the same as 'gq' in evil(vim)
   )
 
 ;;; mp-org/funcs.el ends here
