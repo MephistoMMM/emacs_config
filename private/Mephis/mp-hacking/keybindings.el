@@ -26,7 +26,7 @@
   (spacemacs/set-leader-keys "bt" 'evil-buffer-new) ; new buffer
 
   ;; Window
-  (spacemacs/set-leader-keys "wc" 'delete-window) ; delete window
+  ;; (spacemacs/set-leader-keys "wc" 'delete-window) ; delete window
 
   ;; Expand
   (define-key evil-normal-state-map (kbd "e") 'er/expand-region)
@@ -49,13 +49,12 @@
   ;; Use C-k to start complete snips and use TAB to go arround the points
   ;; How to write yasnippet: https://joaotavora.github.io/yasnippet/snippet-development.html or http://d.pr/n/1bHuv
   (define-key evil-insert-state-map (kbd "C-l") 'hippie-expand)
-  (spacemacs/declare-prefix "h" "helm/hacking/highlight/help")
-  (spacemacs/declare-prefix "hy" "yasnippet")
-  (spacemacs/set-leader-keys "hyn" 'yas-new-snippet)                      ;;hacking yasnippet new
-  (spacemacs/set-leader-keys "hys" 'spacemacs/helm-yas)                   ;;hacking yasnippet show
-  (spacemacs/set-leader-keys "hyl" 'yas-load-snippet-buffer)              ;;hacking yasnippet load
-  (spacemacs/set-leader-keys "hyc" 'yas-load-snippet-buffer-and-close)    ;;hacking yasnippet load and close
-  (spacemacs/set-leader-keys "hyv" 'yas-visit-snippet-file)               ;;hacking yasnippet visit file
+  (spacemacs/declare-prefix "o" "owner")
+  (spacemacs/declare-prefix "oy" "yasnippet")
+  (spacemacs/set-leader-keys "oyn" 'yas-new-snippet)                      ;;owner yasnippet new
+  (spacemacs/set-leader-keys "oyl" 'yas-load-snippet-buffer)              ;;owner yasnippet load
+  (spacemacs/set-leader-keys "oyc" 'yas-load-snippet-buffer-and-close)    ;;owner yasnippet load and close
+  (spacemacs/set-leader-keys "oyv" 'yas-visit-snippet-file)               ;;owner yasnippet visit file
 
   ;; Themes auto change
   (spacemacs/declare-prefix "at" "themes auto change")

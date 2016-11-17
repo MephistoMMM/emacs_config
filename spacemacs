@@ -106,6 +106,8 @@ values."
                          company-tern cython-mode gnuplot aggressive-indent
                          anaconda-eldoc-mode anaconda-mode company-anaconda
                          neotree nyan-mode smartparens  company-emoji
+                         ido-vertical-mode flx-ido
+                         window-purpose ivy-purpose helm-purpose spacemacs-purpose-popwin
                          spacemacs-theme mmm-mode org-mime message-moe)
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
@@ -344,7 +346,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
           ("org-cn"   . "https://elpa.zilongshanren.com/org/")
           ("gnu-cn"   . "https://elpa.zilongshanren.com/gnu/")))
 
-  ;; loading myself themes before init over
+  ;; add config path .
   (push "~/.emacs.d/private/configs/" load-path)
 
   ;; clean env error while starting
