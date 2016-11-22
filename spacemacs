@@ -38,6 +38,7 @@ values."
      ;; ----------------------------------------------------------------
      ;; Catalogue: base
      ivy
+     helm
      (auto-completion :variables
                       auto-completion-enable-sort-by-usage t
                       auto-completion-return-key-behavior 'complete
@@ -75,7 +76,7 @@ values."
      emacs-lisp
      html
      shell-scripts
-     ;; Ready: pip install six pylint pytest yapf jedi json-rpc service_factory
+     ;; Ready: pip install pylint pytest yapf jedi anaconda-mode json-rpc service_factory
      (python :variables
              python-enable-yapf-format-on-save t
              python-test-runner 'pytest)
@@ -104,7 +105,6 @@ values."
    '(rainbow-identifiers fancy-battery coffee-mode hungry-delete
                          magit-gh-pulls magit-gitflow auto-complete
                          company-tern cython-mode gnuplot aggressive-indent
-                         anaconda-eldoc-mode anaconda-mode company-anaconda
                          neotree nyan-mode smartparens  company-emoji
                          ido-vertical-mode flx-ido
                          window-purpose ivy-purpose helm-purpose spacemacs-purpose-popwin

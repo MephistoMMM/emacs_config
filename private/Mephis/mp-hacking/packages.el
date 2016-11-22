@@ -18,7 +18,6 @@
                                     :fetcher github
                                     :repo "MephistoMMM/string-inflection"))
         haskell-mode
-        company-jedi
         python
         web-mode
         flycheck
@@ -54,14 +53,6 @@ and UPPER_CASE (siu) are all just 3 keystrokes away."
 (defun mp-hacking/post-init-python ()
   "Toggle the indent guide"
     (add-hook 'python-mode-hook 'indent-guide-mode)
-    (add-to-list 'company-backends-python-mode 'company-jedi)
-    (remove-hook 'python-mode-hook 'spacemacs//init-eldoc-python-mode)
-  )
-
-(defun mp-hacking/init-company-jedi ()
-  "Add company-jedi to python company-backend."
-  (use-package company-jedi
-    :defer t)
   )
 
 (defun mp-hacking/post-init-haskell-mode ()
