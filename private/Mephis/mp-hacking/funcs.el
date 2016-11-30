@@ -13,7 +13,7 @@
   "This function set many default config to more better!
 Some configurations should be written at here which be unable to config
 in 'with-eval-after-load."
-  )
+ )
 
 (define-minor-mode self-evil-play-mode
   "Buffer-local minor mode to define self evil keyboard."

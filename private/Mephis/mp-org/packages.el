@@ -14,9 +14,7 @@
   '(
     org
     org-agenda
-    org-pomodoro
     markdown-mode
-    company-mode
     (company-orz :location
                  "~/.emacs.d/private/local/company-orz/")
     )

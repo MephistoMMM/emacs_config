@@ -3,6 +3,8 @@
 # key: i_go
 # --
 // Package ${1:pkg name} provide ${2:...}
+//
+// Author: Mephis Pheies <mephistommm@gmail.com>
 package  $1
 
 $0

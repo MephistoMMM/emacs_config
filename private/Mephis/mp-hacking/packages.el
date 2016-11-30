@@ -20,7 +20,6 @@
         haskell-mode
         python
         web-mode
-        flycheck
         auto-complete
         js2-mode
         go-mode
@@ -91,10 +90,13 @@ http://auto-complete.org/doc/manual.html#ignore-case"
 
 (defun mp-hacking/post-init-js2-mode ()
   "Add a series of default configuration fo js2-mode"
-  (add-hook 'js2-mode-hook (lambda ()
-                             (spacemacs/toggle-syntax-checking-off)))
+  (add-hook 'js2-mode-hook '(lambda ()
+                              (setq mode-name "JS2")
+                              (company-mode)))
+
   (with-eval-after-load 'js2-mode
     (progn
+
       ;; these mode related variables must be in eval-after-load
       ;; https://github.com/magnars/.emacs.d/blob/master/settings/setup-js2-mode.el
       (setq-default js2-global-externs '("module"

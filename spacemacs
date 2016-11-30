@@ -38,7 +38,6 @@ values."
      ;; ----------------------------------------------------------------
      ;; Catalogue: base
      ivy
-     helm
      (auto-completion :variables
                       auto-completion-enable-sort-by-usage t
                       auto-completion-return-key-behavior 'complete
@@ -167,8 +166,7 @@ values."
    ;; `recents' `bookmarks' `projects' `agenda' `todos'."
    ;; List sizes may be nil, in which case
    ;; `spacemacs-buffer-startup-lists-length' takes effect.
-   dotspacemacs-startup-lists '((todos  . 4)
-                                (recents . 5)
+   dotspacemacs-startup-lists '((recents . 5)
                                 (projects . 7))
    ;; True if the home buffer should respond to resize events.
    dotspacemacs-startup-buffer-responsive t
@@ -348,11 +346,14 @@ before packages are loaded. If you are unsure, you should try in setting them in
 
   ;; add config path .
   (push "~/.emacs.d/private/configs/" load-path)
+  ;; add local for exec path
+  (push "/usr/local/bin" exec-path)
 
   ;; clean env error while starting
   (if (and (eq system-type 'darwin) (display-graphic-p))
       (when (string-match-p "/zsh$" (getenv "SHELL"))
         (setq exec-path-from-shell-arguments '("-l"))))
+
   )
 
 (defun dotspacemacs/user-config ()
