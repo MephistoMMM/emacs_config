@@ -51,7 +51,9 @@ and UPPER_CASE (siu) are all just 3 keystrokes away."
 
 (defun mp-hacking/post-init-python ()
   "Toggle the indent guide"
-    (add-hook 'python-mode-hook 'indent-guide-mode)
+    (add-hook 'python-mode-hook (lambda ()
+                                  (indent-guide-mode)
+                                  (modify-syntax-entry ?_ "w")))
   )
 
 (defun mp-hacking/post-init-haskell-mode ()
@@ -91,6 +93,7 @@ http://auto-complete.org/doc/manual.html#ignore-case"
 (defun mp-hacking/post-init-js2-mode ()
   "Add a series of default configuration fo js2-mode"
   (add-hook 'js2-mode-hook '(lambda ()
+                              (modify-syntax-entry ?_ "w")
                               (setq mode-name "JS2")
                               (company-mode)))
 
