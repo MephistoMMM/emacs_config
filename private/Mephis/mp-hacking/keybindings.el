@@ -56,6 +56,11 @@
   (spacemacs/set-leader-keys "oyc" 'yas-load-snippet-buffer-and-close)    ;;owner yasnippet load and close
   (spacemacs/set-leader-keys "oyv" 'yas-visit-snippet-file)               ;;owner yasnippet visit file
 
+  ;; Diff
+  (spacemacs/declare-prefix "d" "diff")
+  (spacemacs/set-leader-keys "dd" 'ediff)
+  (spacemacs/set-leader-keys "dm" 'ediff3)
+
   ;; Themes auto change
   (spacemacs/declare-prefix "at" "themes auto change")
   (spacemacs/set-leader-keys "ato" 'mp-ui/open-themes-auto-change)
