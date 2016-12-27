@@ -55,8 +55,6 @@ values."
                       syntax-checking-enable-by-default t)
 
      ;; Catalogue: tools
-     colors ;; use spc t C c to show css colors
-     ;;theming ;;http://spacemacs.org/layers/+themes/theming/README.html
      imenu-list
      markdown
      docker
@@ -354,6 +352,8 @@ before packages are loaded. If you are unsure, you should try in setting them in
       (when (string-match-p "/zsh$" (getenv "SHELL"))
         (setq exec-path-from-shell-arguments '("-l"))))
 
+  ;; hack for remove purpose mode
+  (setq purpose-mode nil)
   )
 
 (defun dotspacemacs/user-config ()
