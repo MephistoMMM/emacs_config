@@ -15,6 +15,13 @@ Some configurations should be written at here which be unable to config
 in 'with-eval-after-load."
  )
 
+(defun mp-ui/format-haskell-buffer ()
+  "format haskell buffer by hindent-reformat-buffer and haskell-mode-stylish-buffer"
+  (interactive)
+  (hindent-reformat-buffer)
+  (haskell-mode-stylish-buffer)
+  )
+
 (define-minor-mode self-evil-play-mode
   "Buffer-local minor mode to define self evil keyboard."
   :keymap (make-sparse-keymap))

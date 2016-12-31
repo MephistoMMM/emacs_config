@@ -61,6 +61,7 @@ and UPPER_CASE (siu) are all just 3 keystrokes away."
   (with-eval-after-load 'haskell-mode
     (add-to-list 'exec-path
                  (concat (getenv "HOME") "/.cabal/bin/"))
+    (spacemacs/set-leader-keys-for-major-mode 'haskell-mode "=" 'mp-ui/format-haskell-buffer)
     )
   )
 
