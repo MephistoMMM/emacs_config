@@ -83,7 +83,8 @@ values."
      ;; Ready: stack install stylish-haskell hlint apply-refact hindent hasktags ghc-mod intero
      ;;        ghc-mod works only with GHC version that was used to build ghc-mod. You can check which version was used by calling ghc-mod --version
      (haskell :variables
-              haskell-enable-hindent-style "chris-done")
+              haskell-completion-backend 'intero
+              haskell-enable-hindent-style "gibiansky")
      react
      go
 
