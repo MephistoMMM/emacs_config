@@ -9,9 +9,6 @@
 
 ;;; Code:
 
-;;before open ranger, we don't have to check and open golden-ratio-mode
-(setq golden-ratio-previous-enable nil)
-
 ;;timer for automatically changing themes
 (setq mp-ui--interval-timer nil)
 
