@@ -21,6 +21,7 @@
         python
         web-mode
         auto-complete
+        company
         js2-mode
         go-mode
         ))
@@ -81,6 +82,11 @@ http://auto-complete.org/doc/manual.html#ignore-case"
   (with-eval-after-load 'auto-complete
     (setq ac-ignore-case 'smart)))
 
+(defun mp-hacking/post-init-company ()
+  "Modify company-idle-delay to 0.6 .
+TODO: we need a more elegant strategy."
+  (with-eval-after-load 'company
+    (setq company-idle-delay 0.6)))
 
 (defun mp-hacking/init-leave-delimited ()
   "Let us be free to  go out of parens."

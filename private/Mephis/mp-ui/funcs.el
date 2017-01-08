@@ -14,7 +14,7 @@
   ;; start line number
   (spacemacs/toggle-line-numbers-on)
   ;; start golden ratio
-  (spacemacs/toggle-golden-ratio-on)
+  ;; (spacemacs/toggle-golden-ratio-on)
 
   ;; Spaceline
   (use-package self-spaceline-config

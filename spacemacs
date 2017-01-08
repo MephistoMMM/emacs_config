@@ -85,6 +85,7 @@ values."
      (haskell :variables
               haskell-completion-backend 'intero
               haskell-enable-hindent-style "gibiansky")
+     yaml
      react
      go
 
