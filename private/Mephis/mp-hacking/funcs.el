@@ -22,6 +22,13 @@ in 'with-eval-after-load."
   (haskell-mode-stylish-buffer)
   )
 
+(defun mp-ui/clear-whole-line ()
+  "Delete all chars in current line"
+  (interactive)
+  (kill-region (progn (forward-visible-line 0) (point))
+               (progn (forward-visible-line 1) (backward-char) (point)))
+  )
+
 (define-minor-mode self-evil-play-mode
   "Buffer-local minor mode to define self evil keyboard."
   :keymap (make-sparse-keymap))

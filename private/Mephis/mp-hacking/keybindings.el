@@ -34,6 +34,10 @@
   (define-key evil-normal-state-map (kbd "E") 'er/contract-region)
   (define-key evil-visual-state-map (kbd "E") 'er/contract-region)
 
+  ;; kill whole line while evil insert
+  ;; C-h :: hungry delete all chars in line
+  (define-key evil-insert-state-map (kbd "C-h") 'mp-ui/clear-whole-line)
+
   ;; Jump out from pairs
   (define-key evil-insert-state-map (kbd "C-'") 'ar-leave-delimited-forward)
   (define-key evil-normal-state-map (kbd "C-'") 'ar-leave-delimited-forward)
