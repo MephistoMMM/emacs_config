@@ -21,11 +21,22 @@ in 'with-eval-after-load.")
   (haskell-mode-stylish-buffer))
 
 (defun mp-ui/hungry-delete ()
-  "Delete all spaces before current point"
+  "Delete the preceding character or all preceding whitespace
+back to the previous non-whitespace character."
   (interactive)
-  (unless (> (char-before) 32)
-    (c-hungry-delete-backwards))
- )
+  (unless (or (not (char-before)) (> (char-before) 32))
+    (let ((limit (point-min))
+          (here (point)))
+      (while (progn
+               (skip-chars-backward " \t\n\r\f\v" limit)
+               (and (eolp)
+                    (eq (char-before) ?\\)
+                    (> (point) limit)))
+        (backward-char))
+      (if (/= (point) here)
+          (delete-region (point) here)))
+    )
+  )
 
 (defun mp-ui/hungry-delete-current-line ()
   "Delete all spaces before current point in current line"
