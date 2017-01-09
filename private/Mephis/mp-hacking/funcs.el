@@ -30,8 +30,7 @@ back to the previous non-whitespace character."
       (while (progn
                (skip-chars-backward " \t\n\r\f\v" limit)
                (and (eolp)
-                    (eq (char-before) ?\\)
-                    (> (point) limit)))
+                    (eq (char-before) ?\\)))
         (backward-char))
       (if (/= (point) here)
           (delete-region (point) here)))
