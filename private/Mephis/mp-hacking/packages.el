@@ -85,6 +85,7 @@ http://auto-complete.org/doc/manual.html#ignore-case"
 (defun mp-hacking/post-init-company ()
   "Modify company-idle-delay to 0.6 .
 TODO: we need a more elegant strategy."
+  (add-hook 'company-mode-hook (lambda () (setq company-dabbrev-ignore-case t)))
   (with-eval-after-load 'company
     (setq company-idle-delay 0.6)))
 

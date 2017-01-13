@@ -7,6 +7,7 @@
  ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector
    ["color-233" "color-167" "color-142" "color-214" "color-109" "color-175" "color-108" "color-223"])
+ '(company-dabbrev-downcase nil)
  '(company-etags-ignore-case nil)
  '(company-go-show-annotation t t)
  '(compilation-message-face (quote default))
@@ -37,7 +38,7 @@
  '(python-indent-guess-indent-offset nil)
  '(python-shell-completion-native-disabled-interpreters (quote ("pypy python2")))
  '(python-shell-completion-native-enable nil)
- '(python-shell-interpreter "python3" t)
+ '(python-shell-interpreter "python3")
  '(safe-local-variable-values
    (quote
     ((eval when
