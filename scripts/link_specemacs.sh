@@ -20,12 +20,16 @@ if [ "$1" == "linux" ]; then
 fi
 
 if [ -e $PRIVATE_PATH ]; then
+    echo "Remove $PRIVATE_PATH"
     rm -rf $PRIVATE_PATH
 fi
 
 if [ -e $SPACEMACS_PATH ]; then
+    echo "Remove $SPACEMACS_PATH"
     rm -rf $SPACEMACS_PATH
 fi
 
+echo "Link $SPACEMACS_FILE to $SPACEMACS_PATH"
 ln -s ${PWD%/scripts}/$SPACEMACS_FILE $SPACEMACS_PATH
+echo "Link $PRIVATE_DIR to $PRIVATE_PATH"
 ln -s ${PWD%/scripts}/$PRIVATE_DIR $PRIVATE_PATH

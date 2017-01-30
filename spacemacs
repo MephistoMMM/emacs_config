@@ -77,11 +77,10 @@ values."
      (python :variables
              python-enable-yapf-format-on-save t
              python-test-runner 'pytest)
-     ;; Ready: npm install eslint;; brew install tern
+     ;; Ready: npm install eslint tern
      javascript
      c-c++
-     ;; Ready: stack install stylish-haskell hlint apply-refact hindent hasktags ghc-mod intero
-     ;;        ghc-mod works only with GHC version that was used to build ghc-mod. You can check which version was used by calling ghc-mod --version
+     ;; Ready: stack install stylish-haskell hlint apply-refact hindent hasktags intero
      (haskell :variables
               haskell-completion-backend 'intero
               haskell-enable-hindent-style "gibiansky")
