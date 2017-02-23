@@ -11,13 +11,13 @@
 
 ;;; Code:
 
-(defun mp-org/create-mrg-buffer ()
+(defun mp-org/new-org-buffer-in-dropdire ()
   "Create a new buffer then init by mrg."
   (interactive)
-  (let ((ξbuf (generate-new-buffer "mrg buffer")))
+  (let ((ξbuf (generate-new-buffer "Dropbox org buffer")))
     (switch-to-buffer ξbuf))
-    (markdown-mode)
-    (setq default-directory mrg-directory-path)
+    (org-mode)
+    (setq default-directory dropbox-org-directory-path)
   )
 
 (defun mp-org/better-default ()

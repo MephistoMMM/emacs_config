@@ -10,6 +10,6 @@
 ;;; Code:
 
 ;; mrg path
-(setq mrg-directory-path "~/.mrg")
+(setq dropbox-org-directory-path "~/.dropbox_org")
 
 ;;; mp-org/config.el ends here
