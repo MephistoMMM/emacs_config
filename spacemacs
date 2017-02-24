@@ -66,6 +66,7 @@ values."
             shell-default-height 30
             shell-default-position 'top)
      (org :variables
+          org-startup-indented t
           org-enable-github-support t)
      ;; version-control
 

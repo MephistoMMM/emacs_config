@@ -17,7 +17,14 @@
   (let ((ξbuf (generate-new-buffer "Dropbox org buffer")))
     (switch-to-buffer ξbuf))
     (org-mode)
-    (setq default-directory dropbox-org-directory-path)
+    (setq default-directory notes-org-directory-path)
+  )
+
+(defun mp-org/org-agenda-reload-files ()
+  "Reset the default value of org-agenda-reload-files."
+  (interactive)
+  (setq-default org-agenda-files (find-lisp-find-files org-directory "\.org$"))
+  (message "Reload org files success!")
   )
 
 (defun mp-org/better-default ()

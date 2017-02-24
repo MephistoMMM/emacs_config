@@ -10,6 +10,5 @@
 ;;; Code:
 
 ;; mrg path
-(setq dropbox-org-directory-path "~/.dropbox_org")
-
+(setq notes-org-directory-path "~/.notes_org")
 ;;; mp-org/config.el ends here

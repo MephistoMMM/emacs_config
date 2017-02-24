@@ -60,9 +60,11 @@
 (defun mp-org/post-init-org ()
   "Configurations for org mode"
   (setq-default
-    org-download-image-dir "~/Dropbox/org/statics"
+    org-directory "~/Dropbox/org"
+    org-download-image-dir (concat org-directory "/statics")
     org-download-image-html-width 600
-    dropbox-org-directory-path "~/Dropbox/org/notes")
+    notes-org-directory-path (concat org-directory "/notes"))
+
   (spacemacs/set-leader-keys "am" 'mp-org/new-org-buffer-in-dropdire)
   (add-hook 'org-mode-hook (lambda ()
                              (if org-descriptive-links
@@ -74,8 +76,8 @@
   (with-eval-after-load 'org
     (spacemacs/set-leader-keys-for-major-mode 'org-mode "C-o" 'org-toggle-inline-images)
     (spacemacs/set-leader-keys-for-major-mode 'org-mode "it" 'org-insert-todo-heading)
+    (spacemacs/set-leader-keys "aor" 'mp-org/org-agenda-reload-files)
 
-    (setq org-directory "~/Dropbox/org")
     (org-babel-do-load-languages
      'org-babel-load-languages
      '((sh . t)
@@ -87,9 +89,10 @@
 
     (load-library "find-lisp")
     (setq-default
+      org-startup-with-inline-images nil
       org-bullets-bullet-list '("❁" "✾" "❀" "❖" "✧")
-      org-agenda-files (find-lisp-find-files "~/Dropbox/org/" "\.org$")
-      org-default-notes-file "~/Dropbox/org/Temp.org"
+      org-agenda-files (find-lisp-find-files org-directory "\.org$")
+      org-default-notes-file (concat org-directory "/Temp.org")
 
       ;; org-log-done 'note
 
