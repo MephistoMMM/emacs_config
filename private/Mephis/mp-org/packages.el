@@ -15,21 +15,21 @@
     org
     org-agenda
     markdown-mode
-    (company-orz :location
-                 "~/.emacs.d/private/local/company-orz/")
+    ;; (company-orz :location
+    ;;              "~/.emacs.d/private/local/company-orz/")
     )
   )
 
-(defun mp-org/init-company-orz ()
-  "Add company-orz to backend"
-  (use-package company-orz
-    :defer t
-    :init
-    (add-hook 'markdown-mode-hook
-              (lambda () (add-to-list 'company-backends-markdown-mode 'company-orz)))
-    (add-hook 'org-mode-hook
-              (lambda () (add-to-list 'company-backends-org-mode 'company-orz)))
-    ))
+;; (defun mp-org/init-company-orz ()
+;;   "Add company-orz to backend"
+;;   (use-package company-orz
+;;     :defer t
+;;     :init
+;;     (add-hook 'markdown-mode-hook
+;;               (lambda () (add-to-list 'company-backends-markdown-mode 'company-orz)))
+;;     (add-hook 'org-mode-hook
+;;               (lambda () (add-to-list 'company-backends-org-mode 'company-orz)))
+;;     ))
 
 (defun mp-org/post-init-markdown-mode ()
   "Add mrg key binding!"
@@ -123,7 +123,7 @@
 
         ("h" "Habits" entry
          (file+headline (concat org-directory "/TODOs.org") "Habits")
-         "* TODO [#B] %?\t:Habits:\nSCHEDULED: %
+         "* TODO [#B] %?\t:Habits:\nSCHEDULED: %T\n:PROPERTIES:\n:STYLE:\thabit\n:END:"
          :empty-lines 1)
 
         ("n" "Temporary Notes" entry
