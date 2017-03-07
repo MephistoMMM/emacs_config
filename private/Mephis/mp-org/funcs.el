@@ -27,6 +27,23 @@
   (message "Reload org files success!")
   )
 
+(defun mp-org/org-insert-src-code-block (src-code-type)
+  "Insert a `SRC-CODE-TYPE' type source code block in org-mode.
+Go files should disable fly-check."
+  (interactive
+   (let ((src-code-types
+          '("emacs-lisp" "python" "c" "shell" "java" "js2" "clojure"
+            "c++" "css" "go" "rust" "R" "sass" "sql" "awk" "haskell"
+            "latex" "lisp" "matlab" "org" "perl" "ruby" "scheme" "sqlite")))
+     (list (ivy-completing-read "Source code type: " src-code-types))))
+  (progn
+    (newline-and-indent)
+    (insert (format "#+BEGIN_SRC %s\n" src-code-type))
+    (newline-and-indent)
+    (insert "#+END_SRC\n")
+    (previous-line 2)
+    (org-edit-src-code)))
+
 (defun mp-org/better-default ()
   "Better default for mp-org, something done in
 user-config should be defined in this function!"

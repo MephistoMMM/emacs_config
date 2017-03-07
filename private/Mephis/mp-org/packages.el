@@ -76,6 +76,7 @@
   (with-eval-after-load 'org
     (spacemacs/set-leader-keys-for-major-mode 'org-mode "C-o" 'org-toggle-inline-images)
     (spacemacs/set-leader-keys-for-major-mode 'org-mode "it" 'org-insert-todo-heading)
+    (spacemacs/set-leader-keys-for-major-mode 'org-mode "ic" 'mp-org/org-insert-src-code-block)
     (spacemacs/set-leader-keys "aor" 'mp-org/org-agenda-reload-files)
 
     (org-babel-do-load-languages
