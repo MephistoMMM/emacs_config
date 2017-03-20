@@ -96,6 +96,7 @@ values."
 
      ;; Catalogue: self layers
      mp-ui
+     ;; npm install -g hexo
      mp-org
      mp-hacking
      )
@@ -346,10 +347,10 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
-  (setq configuration-layer--elpa-archives
-        '(("melpa-cn" . "https://elpa.zilongshanren.com/melpa/")
-          ("org-cn"   . "https://elpa.zilongshanren.com/org/")
-          ("gnu-cn"   . "https://elpa.zilongshanren.com/gnu/")))
+   (setq configuration-layer--elpa-archives
+         '(("melpa-cn" . "https://elpa.zilongshanren.com/melpa/")
+           ("org-cn"   . "https://elpa.zilongshanren.com/org/")
+           ("gnu-cn"   . "https://elpa.zilongshanren.com/gnu/")))
 
   ;; add config path .
   (push "~/.emacs.d/private/configs/" load-path)

@@ -15,6 +15,9 @@
     org
     org-agenda
     markdown-mode
+    (blog-admin :location (recipe
+                           :fetcher github
+                           :repo "MephistoMMM/blog-admin"))
     ;; (company-orz :location
     ;;              "~/.emacs.d/private/local/company-orz/")
     )
@@ -59,13 +62,14 @@
 
 (defun mp-org/post-init-org ()
   "Configurations for org mode"
-  (setq-default
-    org-directory "~/Dropbox/org"
-    org-download-image-dir (concat org-directory "/statics")
-    org-download-image-html-width 600
-    notes-org-directory-path (concat org-directory "/notes"))
+  (setq-default org-directory "~/Dropbox/org")
 
-  (spacemacs/set-leader-keys "am" 'mp-org/new-org-buffer-in-dropdire)
+  ;; set for mequ
+  (setq mequ-conf-file "~/Dropbox/mequ.conf")
+
+  ;; config new org file in dropbox
+  (setq-default notes-org-directory-path (concat org-directory "/notes"))
+
   (add-hook 'org-mode-hook (lambda ()
                              (if org-descriptive-links
                                  (progn (org-remove-from-invisibility-spec '(org-link))
@@ -77,7 +81,15 @@
     (spacemacs/set-leader-keys-for-major-mode 'org-mode "C-o" 'org-toggle-inline-images)
     (spacemacs/set-leader-keys-for-major-mode 'org-mode "it" 'org-insert-todo-heading)
     (spacemacs/set-leader-keys-for-major-mode 'org-mode "ic" 'mp-org/org-insert-src-code-block)
-    (spacemacs/set-leader-keys "aor" 'mp-org/org-agenda-reload-files)
+
+    ;; config org-download and define custom link
+    (setq-default
+     custom-link-img-export-host "http://7xlwbp.com1.z0.glb.clouddn.com"
+     org-download-image-dir (concat org-directory "/statics")
+     org-download-image-html-width 600
+     org-download-link-format "[[img:%s]]"
+     org-download-heading-lvl nil)
+    (org-add-link-type "img" 'mp-org/custom-link-img-follow 'mp-org/custom-link-img-export)
 
     (org-babel-do-load-languages
      'org-babel-load-languages
@@ -101,12 +113,6 @@
       org-agenda-window-setup 'other-window
       org-footnote-auto-adjust t
       org-footnote-auto-label 'confirm
-
-      ;; org-link-abbrev-alist
-      ;; '(("github"    . "https://github.com")
-      ;;   ("codewars"  . "https://www.codewars.com")
-      ;;   ("bili"      . "http://www.bilibili.com")
-      ;;   ("spacemacs" . "http://spacemacs.org"))
 
       org-modules
       '(org-bbdb org-habit org-info org-irc org-w3m org-mac-link org-protocol)
@@ -139,4 +145,22 @@
  )
 
 
-;;; mp-org/packages.el ends here
+(defun mp-org/init-blog-admin ()
+  "Configurations for blog-admin."
+  (use-package blog-admin
+    :defer t
+    :commands blog-admin-start
+    :init
+    (progn
+      (setq blog-admin-backend-path "~/Desktop/blog")
+      (setq blog-admin-backend-type 'hexo)
+      (setq blog-admin-backend-new-post-in-drafts t) ;; create new post in drafts by default
+      (setq blog-admin-backend-new-post-with-same-name-dir t) ;; create same-name directory with new post
+      (setq blog-admin-backend-hexo-config-file "static_blog_config.yml") ;; default assumes _config.yml
+
+      (add-hook 'blog-admin-backend-after-new-post-hook 'find-file)
+
+      (spacemacs/set-leader-keys "ab" 'blog-admin-start)
+      ))
+   )
+
