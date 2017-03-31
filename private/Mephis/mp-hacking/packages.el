@@ -15,8 +15,8 @@
                                     :fetcher github
                                     :repo "MephistoMMM/leave-delimited"))
         (string-inflection :location (recipe
-                                    :fetcher github
-                                    :repo "MephistoMMM/string-inflection"))
+                                      :fetcher github
+                                      :repo "MephistoMMM/string-inflection"))
         haskell-mode
         python
         web-mode

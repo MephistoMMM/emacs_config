@@ -41,7 +41,7 @@ ln -s $DropBoxBlogPath/$postPath $BlogRoot/source/_posts
 
 # download theme
 echo "Start to download theme..."
-git clone https://github.com/MephistoMMM/hexo-theme-typescript.git themes/cards
+git clone https://github.com/MephistoMMM/hexo-theme-cards.git themes/cards
 
 
 echo "Congratulation!"

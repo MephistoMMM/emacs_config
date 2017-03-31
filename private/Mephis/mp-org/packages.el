@@ -18,6 +18,9 @@
     (blog-admin :location (recipe
                            :fetcher github
                            :repo "MephistoMMM/blog-admin"))
+    (advance-words-count :location (recipe
+                                    :fetcher github
+                                    :repo "MephistoMMM/advance-words-count.el"))
     ;; (company-orz :location
     ;;              "~/.emacs.d/private/local/company-orz/")
     )
@@ -33,6 +36,12 @@
 ;;     (add-hook 'org-mode-hook
 ;;               (lambda () (add-to-list 'company-backends-org-mode 'company-orz)))
 ;;     ))
+
+(defun mp-org/init-advance-words-count()
+  "Load advance-words-count"
+  (use-package advance-words-count
+    :defer t)
+  )
 
 (defun mp-org/post-init-markdown-mode ()
   "Add mrg key binding!"

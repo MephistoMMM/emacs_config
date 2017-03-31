@@ -92,7 +92,7 @@ Go files should disable fly-check."
 user-config should be defined in this function!"
 
   ;; Count Words
-  (spacemacs/set-leader-keys "xC" 'count-words)
+  (spacemacs/set-leader-keys "xC" 'advance-words-count)
 
   ;; Org Agenda Reload
   (spacemacs/set-leader-keys "aor" 'mp-org/org-agenda-reload-files)
