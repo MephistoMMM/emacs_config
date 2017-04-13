@@ -63,13 +63,6 @@
       (format "<img src=\"%s\" alt=\"%s\"/>" (url-encode-url url) desc))))
   )
 
-(defun mp-org/org-agenda-reload-files ()
-  "Reset the default value of org-agenda-reload-files."
-  (interactive)
-  (setq-default org-agenda-files (find-lisp-find-files org-directory "\.org$"))
-  (message "Reload org files success!")
-  )
-
 (defun mp-org/org-insert-src-code-block (src-code-type)
   "Insert a `SRC-CODE-TYPE' type source code block in org-mode.
 Go files should disable fly-check."
@@ -87,9 +80,20 @@ Go files should disable fly-check."
     (previous-line 2)
     (org-edit-src-code)))
 
+(defun mp-org/org-agenda-reload-files ()
+  "Reset the default value of org-agenda-reload-files."
+  (interactive)
+  (setq-default org-agenda-files (find-lisp-find-files org-directory "\.org$"))
+  (message "Reload org files success!")
+  )
+
 (defun mp-org/better-default ()
   "Better default for mp-org, something done in
 user-config should be defined in this function!"
+  (run-with-idle-timer 300 t (lambda ()
+                               (spacemacs/custom-perspective-@Org)
+                               (mp-org/org-agenda-reload-files)
+                               (org-agenda-list)))
 
   ;; Count Words
   (spacemacs/set-leader-keys "xC" 'advance-words-count)
@@ -102,7 +106,6 @@ user-config should be defined in this function!"
 
   ;; Uploat img link file
   (spacemacs/set-leader-keys "om" 'mp-org/mequ-upload-img-link-file)
-
 
   ;; (spacemacs/set-leader-keys "xf" 'fill-region)
   ;; This function is the same as 'gq' in evil(vim)

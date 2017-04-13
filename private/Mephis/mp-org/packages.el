@@ -84,8 +84,7 @@
                                  (progn (org-remove-from-invisibility-spec '(org-link))
                                         (org-restart-font-lock)
                                         (setq org-descriptive-links nil)))
-                             (setq truncate-lines nil)
-                             (spacemacs/toggle-line-numbers-off)) 'append)
+                             (setq truncate-lines nil)) 'append)
   (with-eval-after-load 'org
     (spacemacs/set-leader-keys-for-major-mode 'org-mode "C-o" 'org-toggle-inline-images)
     (spacemacs/set-leader-keys-for-major-mode 'org-mode "it" 'org-insert-todo-heading)
@@ -118,6 +117,7 @@
 
       ;; org-log-done 'note
 
+      org-agenda-span 'day
       org-agenda-restore-windows-after-quit t
       org-agenda-window-setup 'other-window
       org-footnote-auto-adjust t
