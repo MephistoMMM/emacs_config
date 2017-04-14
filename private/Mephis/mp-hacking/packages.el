@@ -17,7 +17,7 @@
         (string-inflection :location (recipe
                                       :fetcher github
                                       :repo "MephistoMMM/string-inflection"))
-        haskell-mode
+        ;; haskell-mode
         python
         web-mode
         auto-complete
@@ -57,14 +57,14 @@ and UPPER_CASE (siu) are all just 3 keystrokes away."
                                   (modify-syntax-entry ?_ "w")))
   )
 
-(defun mp-hacking/post-init-haskell-mode ()
-  "Add haskell cabal bin path to 'exec-path."
-  (with-eval-after-load 'haskell-mode
-    (add-to-list 'exec-path
-                 (concat (getenv "HOME") "/.cabal/bin/"))
-    (spacemacs/set-leader-keys-for-major-mode 'haskell-mode "=" 'mp-ui/format-haskell-buffer)
-    )
-  )
+;; (defun mp-hacking/post-init-haskell-mode ()
+;;   "Add haskell cabal bin path to 'exec-path."
+;;   (with-eval-after-load 'haskell-mode
+;;     (add-to-list 'exec-path
+;;                  (concat (getenv "HOME") "/.cabal/bin/"))
+;;     (spacemacs/set-leader-keys-for-major-mode 'haskell-mode "=" 'mp-ui/format-haskell-buffer)
+;;     )
+;;   )
 
 (defun mp-hacking/post-init-web-mode ()
   "Init web mode for indent offset, 'auto-mode-alist and so.

@@ -33,8 +33,8 @@
   (setq tab-always-indent nil)
 
   ;; Theme
-  (mp-ui/config-time-themes-table '(("6" . spacemacs-light) ("17" . monokai)))
-  (mp-ui/open-themes-auto-change)
+  ;; (mp-ui/config-time-themes-table '(("6" . spacemacs-light) ("17" . monokai)))
+  ;; (mp-ui/open-themes-auto-change)
 )
 
 ;; ====================================Themes automatically change =====================================
