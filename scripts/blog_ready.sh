@@ -29,9 +29,11 @@ npm install hexo-deployer-rsync --save
 npm install https://github.com/MephistoMMM/hexo-renderer-org#emacs --save
 npm install hexo-generator-tag --save
 npm install hexo-renderer-marked --save
-npm install hexo-renderer-less --save
+npm install hexo-renderer-scss --save
 npm install hexo-renderer-ejs --save
 npm install hexo-pagination --save
+npm install hexo-generator-feed --save
+npm install hexo-generator-search --save
 
 rm _config.yml
 rm -rf ./source/_posts
