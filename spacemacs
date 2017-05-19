@@ -92,7 +92,9 @@ values."
      ;; go get -u -v github.com/rogpeppe/godef
      ;; go get -u -v golang.org/x/tools/cmd/gorename
      ;; go get -u -v golang.org/x/tools/cmd/goimports
-     go
+     ;; go get -u -v github.com/golang/lint/golint
+     (go :variables
+         gofmt-command "goimports")
 
      ;; Catalogue: self layers
      mp-ui

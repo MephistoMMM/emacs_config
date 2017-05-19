@@ -45,6 +45,7 @@ and UPPER_CASE (siu) are all just 3 keystrokes away."
 (defun mp-hacking/post-init-go-mode ()
   "change flycheck-disabled-checkers"
   (add-hook 'flycheck-mode-hook (lambda ()
+                                  (add-to-list 'flycheck-disabled-checkers 'go-vet)
                                   (add-to-list 'flycheck-disabled-checkers 'go-gofmt)
                                   (add-to-list 'flycheck-disabled-checkers 'go-errcheck)
                                   ))
