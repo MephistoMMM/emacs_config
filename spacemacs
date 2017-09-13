@@ -53,6 +53,7 @@ values."
                      spell-checking-enable-by-default nil)
      (syntax-checking :variables
                       syntax-checking-enable-by-default t)
+     vinegar
 
      ;; Catalogue: tools
      imenu-list

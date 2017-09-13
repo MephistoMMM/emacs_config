@@ -87,19 +87,36 @@ Go files should disable fly-check."
   (message "Reload org files success!")
   )
 
+(defun mp-org/auto-org-agenda-task ()
+  "If auto org agenda task is not close.
+Switch to @org -> reload org agenda file -> show agenda list"
+  (unless close-auto-org-agenda-task
+    (spacemacs/custom-perspective-@Org)
+    (mp-org/org-agenda-reload-files)
+    (org-agenda-list))
+  )
+
+(defun mp-org/switch-auto-org-agenda-task ()
+  (interactive)
+  (setq close-auto-org-agenda-task (not close-auto-org-agenda-task))
+  (if close-auto-org-agenda-task
+      (message "Closed auto org agenda task.")
+      (message "Opened auto org agenda task."))
+  )
+
 (defun mp-org/better-default ()
   "Better default for mp-org, something done in
 user-config should be defined in this function!"
-  (run-with-idle-timer 300 t (lambda ()
-                               (spacemacs/custom-perspective-@Org)
-                               (mp-org/org-agenda-reload-files)
-                               (org-agenda-list)))
+  (run-with-idle-timer 300 t 'mp-org/auto-org-agenda-task)
+
+  ;; Switch auto org agenda task
+  (spacemacs/set-leader-keys "oa" 'mp-org/switch-auto-org-agenda-task)
 
   ;; Count Words
   (spacemacs/set-leader-keys "xC" 'advance-words-count)
 
   ;; Org Agenda Reload
-  (spacemacs/set-leader-keys "aor" 'mp-org/org-agenda-reload-files)
+  (spacemacs/set-leader-keys "or" 'mp-org/org-agenda-reload-files)
 
   ;; Org new file in Dropbox
   (spacemacs/set-leader-keys "on" 'mp-org/new-org-buffer-in-dropdire)
