@@ -161,7 +161,7 @@
     :commands blog-admin-start
     :init
     (progn
-      (setq blog-admin-backend-path "~/Desktop/blog")
+      (setq blog-admin-backend-path "~/Documents/Person/Blog")
       (setq blog-admin-backend-type 'hexo)
       (setq blog-admin-backend-new-post-in-drafts t) ;; create new post in drafts by default
       (setq blog-admin-backend-new-post-with-same-name-dir t) ;; create same-name directory with new post

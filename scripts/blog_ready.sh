@@ -1,4 +1,4 @@
-#!/bin/env bash
+#!/bin/bash
 
 DropBoxBlogPath=~/Dropbox/Blog
 configPath=static_blog_config.yml
@@ -17,8 +17,8 @@ if [ ! -e $BlogRoot ]; then
 fi
 
 # install hexo
-echo "Install hexo..."
-brew install node
+echo "Install hexo and libsass..."
+brew install node libsass
 npm install -g hexo
 
 # init hexo
@@ -29,7 +29,7 @@ npm install hexo-deployer-rsync --save
 npm install https://github.com/MephistoMMM/hexo-renderer-org#emacs --save
 npm install hexo-generator-tag --save
 npm install hexo-renderer-marked --save
-npm install hexo-renderer-scss --save
+npm install hexo-renderer-sass --save
 npm install hexo-renderer-ejs --save
 npm install hexo-pagination --save
 npm install hexo-generator-feed --save
@@ -43,7 +43,7 @@ ln -s $DropBoxBlogPath/$postPath $BlogRoot/source/_posts
 
 # download theme
 echo "Start to download theme..."
-git clone https://github.com/MephistoMMM/hexo-theme-cards.git themes/cards
+git clone https://github.com/MephistoMMM/hexo-theme-even.git themes/even
 
 
 echo "Congratulation!"
