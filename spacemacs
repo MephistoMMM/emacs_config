@@ -53,7 +53,6 @@ values."
                      spell-checking-enable-by-default nil)
      (syntax-checking :variables
                       syntax-checking-enable-by-default t)
-     vinegar
 
      ;; Catalogue: tools
      imenu-list
@@ -81,7 +80,7 @@ values."
              python-test-runner 'pytest)
      ;; Ready: npm install eslint tern
      javascript
-     c-c++
+     (c-c++ :variables c-c++-enable-clang-support t)
      ;; Ready: stack install stylish-haskell hlint apply-refact hindent hasktags intero
      ;; (haskell :variables
      ;;          haskell-completion-backend 'intero
@@ -186,9 +185,9 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(monokai
+   dotspacemacs-themes '(;;monokai
+                         spacemacs-dark
                          spacemacs-light
-                         ;; gruvbox
                          )
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
