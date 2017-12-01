@@ -22,7 +22,6 @@
     (spaceline-self-theme)
     (setq powerline-default-separator 'wave)
     (setq ns-use-srgb-colorspace nil)
-    ;; (spaceline-compile);; this bug has been fixed
     )
 
   ;; Parens

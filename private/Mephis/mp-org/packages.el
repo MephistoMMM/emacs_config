@@ -127,26 +127,26 @@
       '(org-bbdb org-habit org-info org-irc org-w3m org-mac-link org-protocol)
       org-capture-templates
       '(("w" "Task" entry
-         (file+headline (concat org-directory "/TODOs.org") "Fighting")
+         (file+headline (lambda () (concat org-directory "/TODOs.org")) "Fighting")
          "* TODO [#A] %^{Task}\nSCHEDULED: %t\n")
 
         ("t" "Todo" entry
-         (file+headline (concat org-directory "/TODOs.org") "Play Space")
+         (file+headline (lambda () (concat org-directory "/TODOs.org")) "Play Space")
          "* TODO [#%^{level|B|C}] %?\nSCHEDULED: %t\n%i\n"
          :empty-lines 1)
 
         ("l" "Links" entry
-         (file+headline (concat org-directory "/TODOs.org") "Play Space")
+         (file+headline (lambda () (concat org-directory "/TODOs.org")) "Play Space")
          "* TODO [#C] %? link \t%^g\nCaptured On: %U\n"
          :empty-lines 1)
 
         ("h" "Habits" entry
-         (file+headline (concat org-directory "/TODOs.org") "Habits")
+         (file+headline (lambda () (concat org-directory "/TODOs.org")) "Habits")
          "* TODO [#B] %?\t:Habits:\nSCHEDULED: %T\n:PROPERTIES:\n:STYLE:\thabit\n:END:"
          :empty-lines 1)
 
         ("n" "Temporary Notes" entry
-         (file+headline (concat org-directory "/Temp.org") "Temporary Notes")
+         (file+headline (lambda () (concat org-directory "/Temp.org")) "Temporary Notes")
          "* %?\n  %i%a\n%U"
          :empty-lines 1)
       )

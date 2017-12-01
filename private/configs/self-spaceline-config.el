@@ -43,8 +43,7 @@
       (erc-track :when active)
       (version-control :when active)
       (org-pomodoro :when active)
-      (org-clock :when active)
-      nyan-cat)
+      (org-clock :when active))
 
     `(which-function
       (python-pyvenv :fallback python-pyenv)
