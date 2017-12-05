@@ -17,6 +17,9 @@
         (string-inflection :location (recipe
                                       :fetcher github
                                       :repo "MephistoMMM/string-inflection"))
+        (goenv :location (recipe
+                          :fetcher github
+                          :repo "MephistoMMM/goenv"))
         ;; haskell-mode
         python
         web-mode
@@ -39,6 +42,16 @@ and UPPER_CASE (siu) are all just 3 keystrokes away."
     (self-evil-play-define-key "crc" 'string-inflection-lower-camelcase)
     (self-evil-play-define-key "cru" 'string-inflection-upcase)
     (self-evil-play-define-key "crl" 'string-inflection-lisp)
+    )
+  )
+
+(defun mp-hacking/init-goenv ()
+  "Add Goenv."
+  (use-package goenv
+    :defer t
+    :init
+    (spacemacs/set-leader-keys-for-major-mode 'go-mode "Va" 'goenv-activate)
+    (spacemacs/set-leader-keys-for-major-mode 'go-mode "Vd" 'goenv-deactivate)
     )
   )
 

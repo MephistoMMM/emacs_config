@@ -38,6 +38,9 @@
   ;; Window
   ;; (spacemacs/set-leader-keys "wc" 'delete-window) ; delete window
 
+  ;; Frame
+  (define-key evil-normal-state-map (kbd "C-w f") 'other-frame)
+
   ;; Expand
   (define-key evil-normal-state-map (kbd "e") 'er/expand-region)
   (define-key evil-visual-state-map (kbd "e") 'er/expand-region)
