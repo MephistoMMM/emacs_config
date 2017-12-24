@@ -86,7 +86,7 @@
                                         (setq org-descriptive-links nil)))
                              (setq truncate-lines nil)) 'append)
   (with-eval-after-load 'org
-    (spacemacs/set-leader-keys-for-major-mode 'org-mode "C-o" 'org-toggle-inline-images)
+    (spacemacs/set-leader-keys-for-major-mode 'org-mode "C-o" 'mp-org/toggle-inline-images)
     (spacemacs/set-leader-keys-for-major-mode 'org-mode "it" 'org-insert-todo-heading)
     (spacemacs/set-leader-keys-for-major-mode 'org-mode "ic" 'mp-org/org-insert-src-code-block)
 

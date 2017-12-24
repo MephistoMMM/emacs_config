@@ -9,6 +9,8 @@
 
 ;;; Code:
 
+;;;; Better-Default
+
 (defun mp-ui/better-default ()
   "Provide better default for UI"
   ;; start line number
@@ -36,7 +38,7 @@
   ;; (mp-ui/open-themes-auto-change)
 )
 
-;; ====================================Themes automatically change =====================================
+;;;; Themes automatically change
 
 (defun mp-ui/config-time-themes-table (tt)
   "Set time . themes table for time-themes-table.
