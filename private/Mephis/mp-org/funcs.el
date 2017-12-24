@@ -96,19 +96,23 @@ Go files should disable fly-check."
 
 (defun mp-org/custom-link-img-export (path desc format)
   "export event of custom link img."
-  (cond
-   ((eq format 'html)
-    ;; concat custom img host and final two section of the path
-    (let (uri-slices slices-len url)
-         (setq uri-slices (split-string path "/"))
-         (setq slices-len (length uri-slices))
-         (setq url (if (< slices-len 2)
-                    (concat custom-link-img-export-host "/" (car uri-slices))
-                    (concat custom-link-img-export-host "/"
-                    (nth (- slices-len 2) uri-slices) "/"
-                    (nth (- slices-len 1) uri-slices))))
-      (message (url-encode-url url))
-      (format "<img src=\"%s\" alt=\"%s\"/>" (url-encode-url url) desc))))
+  ;; concat custom img host and final two section of the path
+  (let (uri-slices slices-len url)
+    (setq uri-slices (split-string path "/"))
+    (setq slices-len (length uri-slices))
+    (setq url (if (< slices-len 2)
+                  (concat custom-link-img-export-host "/" (car uri-slices))
+                (concat custom-link-img-export-host "/"
+                        (nth (- slices-len 2) uri-slices) "/"
+                        (nth (- slices-len 1) uri-slices))))
+    (message (url-encode-url url))
+    (cond
+     ((eq format 'html)
+      (format "<img src=\"%s\" alt=\"%s\"/>" (url-encode-url url) desc))
+     ((eq format 'md)
+      (format "![%s](%s)" desc (url-encode-url url)))
+     )
+    )
   )
 
 ;;;; Auto Org Agenda
