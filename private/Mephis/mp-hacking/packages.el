@@ -27,8 +27,14 @@
         company
         js2-mode
         go-mode
+        yaml-mode
         outshine
         ))
+
+(defun mp-hacking/post-init-yaml-mode ()
+  "Show linenum while opening yaml file."
+  (add-hook 'yaml-mode-hook 'spacemacs/toggle-line-numbers-on)
+  )
 
 (defun mp-hacking/init-outshine ()
   ""

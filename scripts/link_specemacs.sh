@@ -11,9 +11,11 @@
 
 PRIVATE_PATH=~/.emacs.d/private
 SPACEMACS_PATH=~/.spacemacs
+LATEXMK_PATH=~/.latexmkrc
 
 SPACEMACS_FILE=spacemacs
 PRIVATE_DIR=private
+LATEXMK_FILE=latexmkrc
 
 if [ "$1" == "linux" ]; then
     SPACEMACS_FILE=spacemacs-linux
@@ -33,3 +35,5 @@ echo "Link $SPACEMACS_FILE to $SPACEMACS_PATH"
 ln -s ${PWD%/scripts}/$SPACEMACS_FILE $SPACEMACS_PATH
 echo "Link $PRIVATE_DIR to $PRIVATE_PATH"
 ln -s ${PWD%/scripts}/$PRIVATE_DIR $PRIVATE_PATH
+echo "Link LatexMk file"
+ln -s ${PWD%/scripts}/$LATEXMK_FILE $LATEXMK_PATH

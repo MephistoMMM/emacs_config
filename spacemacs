@@ -49,7 +49,6 @@ values."
                       auto-completion-private-snippets-directory "~/.emacs.d/private/snippets/")
 
      git
-     semantic
      (spell-checking :variables
                      spell-checking-enable-by-default nil)
      (syntax-checking :variables
@@ -75,6 +74,12 @@ values."
      ;; Catalogue: language
      emacs-lisp
      html
+     ;; Ready: install MacTeX https://www.latex-project.org/get/
+     ;;        ln -s /usr/local/texlive/2017/bin/x86_64-darwin/xelatex /usr/local/bin/xelatex
+     ;;        ln -s /usr/local/texlive/2017/bin/x86_64-darwin/latexmk /usr/local/bin/latexmk
+     (latex :variables
+            latex-build-command "LatexMk" ;; latexmk -pdf --synctex=1 -interaction=nonstopmode  -file-line-error  filename.tex
+            latex-enable-folding t)
      shell-scripts
      ;; Ready: pip install pylint pytest yapf jedi anaconda-mode json-rpc service_factory
      (python :variables

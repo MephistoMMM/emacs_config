@@ -15,6 +15,7 @@
     org
     org-agenda
     markdown-mode
+    auctex
     (blog-admin :location (recipe
                            :fetcher github
                            :repo "MephistoMMM/blog-admin"))
@@ -36,6 +37,11 @@
 ;;     (add-hook 'org-mode-hook
 ;;               (lambda () (add-to-list 'company-backends-org-mode 'company-orz)))
 ;;     ))
+
+(defun mp-org/post-init-auctex ()
+  "Use linenumber in LaTeX mode"
+    (add-hook 'LaTeX-mode-hook 'spacemacs/toggle-line-numbers-on)
+  )
 
 (defun mp-org/init-advance-words-count()
   "Load advance-words-count"
