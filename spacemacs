@@ -113,7 +113,7 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(dracula-theme atom-one-dark-theme)
+   dotspacemacs-additional-packages '(dracula-theme)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -122,7 +122,7 @@ values."
                          magit-gh-pulls magit-gitflow auto-complete
                          company-tern cython-mode gnuplot aggressive-indent
                          neotree nyan-mode smartparens  company-emoji
-                         ido-vertical-mode flx-ido
+                         ido-vertical-mode flx-ido neotree
                          window-purpose ivy-purpose helm-purpose spacemacs-purpose-popwin
                          spacemacs-theme mmm-mode org-mime message-moe)
    ;; Defines the behaviour of Spacemacs when installing packages.
