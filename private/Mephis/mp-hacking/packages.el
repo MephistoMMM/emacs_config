@@ -23,7 +23,6 @@
         ;; haskell-mode
         python
         web-mode
-        auto-complete
         company
         js2-mode
         go-mode
@@ -93,18 +92,20 @@ and UPPER_CASE (siu) are all just 3 keystrokes away."
   (use-package goenv
     :defer t
     :init
-    (spacemacs/set-leader-keys-for-major-mode 'go-mode "Va" 'goenv-activate)
-    (spacemacs/set-leader-keys-for-major-mode 'go-mode "Vd" 'goenv-deactivate)
+    (with-eval-after-load 'go-mode
+      (spacemacs/set-leader-keys-for-major-mode 'go-mode "Va" 'goenv-activate)
+      (spacemacs/set-leader-keys-for-major-mode 'go-mode "Vd" 'goenv-deactivate))
     )
   )
 
 (defun mp-hacking/post-init-go-mode ()
   "change flycheck-disabled-checkers"
-  (add-hook 'flycheck-mode-hook (lambda ()
-                                  (add-to-list 'flycheck-disabled-checkers 'go-vet)
-                                  (add-to-list 'flycheck-disabled-checkers 'go-gofmt)
-                                  (add-to-list 'flycheck-disabled-checkers 'go-errcheck)
-                                  ))
+  (with-eval-after-load 'flycheck
+    (add-hook 'flycheck-mode-hook (lambda ()
+                                    (add-to-list 'flycheck-disabled-checkers 'go-vet)
+                                    (add-to-list 'flycheck-disabled-checkers 'go-gofmt)
+                                    (add-to-list 'flycheck-disabled-checkers 'go-errcheck)
+                                    )))
   )
 
 (defun mp-hacking/post-init-python ()
@@ -132,12 +133,6 @@ http://web-mode.org"
     (setq web-mode-markup-indent-offset 2)
     (setq web-mode-css-indent-offset 2))
   )
-
-(defun mp-hacking/post-init-auto-complete ()
-  "Ignore case if completion target string doesn't include upper characters
-http://auto-complete.org/doc/manual.html#ignore-case"
-  (with-eval-after-load 'auto-complete
-    (setq ac-ignore-case 'smart)))
 
 (defun mp-hacking/post-init-company ()
   "Modify company-idle-delay to 0.6 .

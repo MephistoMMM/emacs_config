@@ -14,7 +14,6 @@
   '(
     org
     org-agenda
-    markdown-mode
     auctex
     (blog-admin :location (recipe
                            :fetcher github
@@ -27,45 +26,17 @@
     )
   )
 
-;; (defun mp-org/init-company-orz ()
-;;   "Add company-orz to backend"
-;;   (use-package company-orz
-;;     :defer t
-;;     :init
-;;     (add-hook 'markdown-mode-hook
-;;               (lambda () (add-to-list 'company-backends-markdown-mode 'company-orz)))
-;;     (add-hook 'org-mode-hook
-;;               (lambda () (add-to-list 'company-backends-org-mode 'company-orz)))
-;;     ))
-
 (defun mp-org/post-init-auctex ()
   "Use linenumber in LaTeX mode"
     (add-hook 'LaTeX-mode-hook 'spacemacs/toggle-line-numbers-on)
+    ;; latex for perform full-document previews
+    (add-hook 'doc-view-mode-hook 'auto-revert-mode)
   )
 
 (defun mp-org/init-advance-words-count()
   "Load advance-words-count"
   (use-package advance-words-count
     :defer t)
-  )
-
-(defun mp-org/post-init-markdown-mode ()
-  "Add mrg key binding!"
-  ;; (setq-default
-  ;;  mrg-directory-path "~/Dropbox/mrg"
-  ;;  markdown-enable-math t)
-  ;; (spacemacs/set-leader-keys "am" 'mp-org/create-mrg-buffer)
-  ;; ;; mrg layout
-  ;; ;; https://github.com/syl20bnr/spacemacs/tree/master/layers/%2Bwindow-management/spacemacs-layouts
-  ;; (when (fboundp 'spacemacs|define-custom-layout)
-  ;;   (spacemacs|define-custom-layout "mrg layout"
-  ;;     :binding "m"
-  ;;     :body
-  ;;     (find-file (concat mrg-directory-path "/index.md")))
-  ;;   )
-
-  ;; for bluprinfile (apib)
-  (add-to-list 'auto-mode-alist '("\\.apib\\'" . markdown-mode))
   )
 
 (defun mp-org/post-init-org-agenda ()

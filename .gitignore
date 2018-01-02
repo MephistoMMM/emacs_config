@@ -4,3 +4,6 @@
 # Packaging
 .cask
 TAGS
+
+# Spacemacs Dependences
+ycmd/

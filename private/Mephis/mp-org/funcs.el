@@ -35,9 +35,6 @@ user-config should be defined in this function!"
 
   ;; (spacemacs/set-leader-keys "xf" 'fill-region)
   ;; This function is the same as 'gq' in evil(vim)
-
-  ;; latex for perform full-document previews
-  (add-hook 'doc-view-mode-hook 'auto-revert-mode)
   )
 
 (defun mp-org/new-org-buffer-in-dropdire ()

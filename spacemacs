@@ -47,20 +47,16 @@ values."
                       auto-completion-complete-with-key-sequence-delay 0.1
                       auto-completion-enable-snippets-in-popup t
                       auto-completion-private-snippets-directory "~/.emacs.d/private/snippets/")
-
      git
-     (spell-checking :variables
-                     spell-checking-enable-by-default nil)
-     (syntax-checking :variables
-                      syntax-checking-enable-by-default t)
+     (spell-checking :variables spell-checking-enable-by-default nil)
+     (syntax-checking :variables syntax-checking-enable-by-default t)
 
      ;; Catalogue: tools
      imenu-list
      markdown
      protobuf
      docker
-     (ranger :variables
-             ranger-show-preview t)
+     (ranger :variables ranger-show-preview t)
      (shell :variables
             shell-default-shell 'eshell
             shell-protect-eshell-prompt t
@@ -113,7 +109,7 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(dracula-theme)
+   dotspacemacs-additional-packages '(dracula-theme sicp)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
