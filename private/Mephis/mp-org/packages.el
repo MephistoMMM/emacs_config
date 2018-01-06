@@ -66,6 +66,7 @@
     (spacemacs/set-leader-keys-for-major-mode 'org-mode "C-o" 'mp-org/toggle-inline-images)
     (spacemacs/set-leader-keys-for-major-mode 'org-mode "it" 'org-insert-todo-heading)
     (spacemacs/set-leader-keys-for-major-mode 'org-mode "ic" 'mp-org/org-insert-src-code-block)
+    (spacemacs/set-leader-keys-for-major-mode 'org-mode "w" 'mp-org/wrap-source-code)
 
     ;; config org-download and define custom link
     (setq-default
@@ -78,11 +79,8 @@
 
     (org-babel-do-load-languages
      'org-babel-load-languages
-     '((sh . t)
-       (js . t)
+     '((emacs-lisp . t)
        (python . t)
-       (emacs-lisp . t)
-       (haskell . t)
        (C . t)))
 
     (load-library "find-lisp")

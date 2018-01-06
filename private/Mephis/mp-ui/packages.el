@@ -20,12 +20,12 @@
 
 (defun mp-ui/post-init-tern ()
   "Change the view of Tern in minor-mode-list"
-  (add-hook 'tern-mode-hook (lambda () (diminish 'tern-mode "\u24e3")))
+  (spacemacs|diminish tern-mode " \u24e3" " (js_t) ")
   )
 
 (defun mp-ui/post-init-hindent ()
   "Change the view of Hindent in minor-mode-list"
-  (add-hook 'hindent-mode-hook (lambda () (diminish 'hindent-mode "\u24bd")))
+  (spacemacs|diminish hindent-mode " \u24bd" " (h) ")
   )
 
 ;; TODO: it should change golden-ratio-previous-enable to nil while toggle the golden-ratio

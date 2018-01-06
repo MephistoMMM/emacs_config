@@ -37,6 +37,7 @@ user-config should be defined in this function!"
   ;; This function is the same as 'gq' in evil(vim)
   )
 
+
 (defun mp-org/new-org-buffer-in-dropdire ()
   "Create a new buffer then init by mrg."
   (interactive)
@@ -46,15 +47,15 @@ user-config should be defined in this function!"
   (setq default-directory notes-org-directory-path)
   )
 
+;;;; Source Code
+
+(setq mp-org/src-code-types
+  '("emacs-lisp" "python" "c" "shell" "java" "js2" "clojure" "c++" "css" "go" "rust" "sh" "sass" "sql" "awk" "haskell" "latex" "lisp" "matlab" "org" "perl" "ruby" "scheme" "sqlite"))
+
 (defun mp-org/org-insert-src-code-block (src-code-type)
   "Insert a `SRC-CODE-TYPE' type source code block in org-mode.
 Go files should disable fly-check."
-  (interactive
-   (let ((src-code-types
-          '("emacs-lisp" "python" "c" "shell" "java" "js2" "clojure"
-            "c++" "css" "go" "rust" "R" "sass" "sql" "awk" "haskell"
-            "latex" "lisp" "matlab" "org" "perl" "ruby" "scheme" "sqlite")))
-     (list (ivy-completing-read "Source code type: " src-code-types))))
+  (interactive (list (ivy-completing-read "Source code type: " mp-org/src-code-types)))
   (progn
     (newline-and-indent)
     (insert (format "#+BEGIN_SRC %s\n" src-code-type))
@@ -63,6 +64,20 @@ Go files should disable fly-check."
     (previous-line 2)
     (org-edit-src-code)))
 
+(defun mp-org/wrap-source-code (start end)
+  "Insert '#+BEGIN_SRC lang' and '#+END_SRC' to the begin and end of code"
+  (interactive "r")
+  (let ((lang (ivy-completing-read "Source code type: " mp-org/src-code-types)))
+    (save-excursion
+      (narrow-to-region start end)
+      (goto-char (point-min))
+      (insert (format "#+BEGIN_SRC %s\n" lang))
+      (while (not (eobp))
+        (forward-line))
+      (insert "#+END_SRC\n")
+      (widen))
+    )
+  )
 
 ;;;; Mequ And Custom Link
 

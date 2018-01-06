@@ -32,7 +32,6 @@
       ((major-mode buffer-modified)
       :fallback evil-state
       :face highlight-face)
-      anzu
       auto-compile
       ((persp-name workspace-number window-number)
        :separator "|")
@@ -48,6 +47,7 @@
     `(which-function
       (python-pyvenv :fallback python-pyenv)
       (battery :when active)
+      anzu
       selection-info
       input-method
       ((buffer-encoding-abbrev
