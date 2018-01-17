@@ -19,12 +19,7 @@
   ;; (spacemacs/toggle-golden-ratio-on)
 
   ;; Spaceline
-  (use-package self-spaceline-config
-    :config
-    (spaceline-self-theme)
-    (setq powerline-default-separator 'wave)
-    (setq ns-use-srgb-colorspace nil)
-    )
+  (setq ns-use-srgb-colorspace nil)
 
   ;; Parens
   (electric-pair-mode t)

@@ -12,7 +12,6 @@
 (defconst mp-ui-packages
   '(
     linum-relative
-    golden-ratio
     tern
     hindent
     ranger)
@@ -35,13 +34,6 @@
   (setq ranger-max-preview-size 2)
   )
 
-(defun mp-ui/post-init-golden-ratio ()
-  "do noting in ranger-mode"
-  (with-eval-after-load 'golden-ratio
-    (dolist (mode '("ranger-mode"))
-      (add-to-list 'golden-ratio-exclude-modes mode)))
-  )
-
 ;;line number
 (defun mp-ui/post-init-linum-relative ()
   "Change line format if not in gui"
@@ -50,5 +42,4 @@
       (setq linum-relative-format "%3s "))
     )
   )
-
 ;;; mp-ui/packages.el ends here

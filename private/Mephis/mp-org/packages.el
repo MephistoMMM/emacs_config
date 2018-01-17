@@ -21,9 +21,28 @@
     (advance-words-count :location (recipe
                                     :fetcher github
                                     :repo "MephistoMMM/advance-words-count.el"))
+    ;; https://coldnew.github.io/d2d60fe2/
+    pangu-spacing
     ;; (company-orz :location
     ;;              "~/.emacs.d/private/local/company-orz/")
     )
+  )
+
+(defun mp-org/init-pangu-spacing()
+  "Insert White Spece Automatically."
+  (use-package pangu-spacing
+    :defer t
+    :init
+    (with-eval-after-load 'org
+      (add-hook 'org-mode-hook
+                '(lambda ()
+                   (set (make-local-variable 'pangu-spacing-real-insert-separtor) t)))
+      )
+    (with-eval-after-load 'auctex
+      (add-hook 'LaTeX-mode-hook
+                '(lambda ()
+                   (set (make-local-variable 'pangu-spacing-real-insert-separtor) t)))
+      ))
   )
 
 (defun mp-org/post-init-auctex ()
@@ -51,7 +70,7 @@
   (setq-default org-directory "~/Dropbox/org")
 
   ;; set for mequ
-  (setq mequ-conf-file "~/Dropbox/mequ.conf")
+  (setq mequ-conf-file "~/Dropbox/dotconf/mequ.conf")
 
   ;; config new org file in dropbox
   (setq-default notes-org-directory-path (concat org-directory "/notes"))
@@ -70,7 +89,7 @@
 
     ;; config org-download and define custom link
     (setq-default
-     custom-link-img-export-host "http://7xlwbp.com1.z0.glb.clouddn.com"
+     custom-link-img-export-host "http://7xlrfg.com1.z0.glb.clouddn.com"
      org-download-image-dir (concat org-directory "/statics")
      org-download-image-html-width 600
      org-download-link-format "[[img:%s]]"
@@ -97,6 +116,10 @@
       org-agenda-window-setup 'other-window
       org-footnote-auto-adjust t
       org-footnote-auto-label 'confirm
+
+      ;; html export
+      org-html-style-default ""
+      org-html-htmlize-output-type nil
 
       org-modules
       '(org-bbdb org-habit org-info org-irc org-w3m org-mac-link org-protocol)

@@ -41,6 +41,11 @@
   ;; Frame
   (define-key evil-normal-state-map (kbd "C-w f") 'other-frame)
 
+  ;; Search
+  (define-key evil-normal-state-map (kbd "/") 'evil-search-forward)
+  (define-key evil-normal-state-map (kbd "n") 'evil-search-next)
+  (define-key evil-normal-state-map (kbd "N") 'evil-search-previous)
+
   ;; Expand
   (define-key evil-normal-state-map (kbd "e") 'er/expand-region)
   (define-key evil-visual-state-map (kbd "e") 'er/expand-region)
@@ -49,8 +54,8 @@
 
   ;; Hungry Delete Backwards
   ;; C-h :: hungry delete all chars in line
-  (define-key evil-insert-state-map (kbd "C-h") 'mp-ui/hungry-delete-current-line)
-  (define-key evil-insert-state-map (kbd "<C-backspace>") 'mp-ui/hungry-delete)
+  (define-key evil-insert-state-map (kbd "C-h") 'mp-hacking/hungry-delete-current-line)
+  (define-key evil-insert-state-map (kbd "<C-backspace>") 'mp-hacking/hungry-delete)
 
   ;; Jump out from pairs
   (define-key evil-insert-state-map (kbd "C-'") 'ar-leave-delimited-forward)
@@ -78,11 +83,6 @@
   (spacemacs/declare-prefix "d" "diff")
   (spacemacs/set-leader-keys "dd" 'ediff)
   (spacemacs/set-leader-keys "dm" 'ediff3)
-
-  ;; Themes auto change
-  (spacemacs/declare-prefix "at" "themes auto change")
-  (spacemacs/set-leader-keys "ato" 'mp-ui/open-themes-auto-change)
-  (spacemacs/set-leader-keys "atc" 'mp-ui/close-themes-auto-change)
   )
 
 ;;; keybindings.el ends here

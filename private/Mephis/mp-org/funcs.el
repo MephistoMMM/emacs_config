@@ -64,6 +64,30 @@ Go files should disable fly-check."
     (previous-line 2)
     (org-edit-src-code)))
 
+(defun mp-org/wrap-math-block-formula (start end)
+  "Insert '\\[ ... \\]' to the begin and end of formula"
+  (interactive "r")
+  (save-excursion
+    (narrow-to-region start end)
+    (goto-char (point-min))
+    (insert "\\[ ")
+    (goto-char (point-max))
+    (insert " \\]")
+    (widen))
+  )
+
+(defun mp-org/wrap-math-inline-formula (start end)
+  "Insert '\\( ... \\)' or '\\[ ... \\]' to the begin and end of formula"
+  (interactive "r")
+  (save-excursion
+    (narrow-to-region start end)
+    (goto-char (point-min))
+    (insert "\\( ")
+    (goto-char (point-max))
+    (insert " \\)")
+    (widen))
+  )
+
 (defun mp-org/wrap-source-code (start end)
   "Insert '#+BEGIN_SRC lang' and '#+END_SRC' to the begin and end of code"
   (interactive "r")
@@ -72,8 +96,7 @@ Go files should disable fly-check."
       (narrow-to-region start end)
       (goto-char (point-min))
       (insert (format "#+BEGIN_SRC %s\n" lang))
-      (while (not (eobp))
-        (forward-line))
+      (goto-char (point-max))
       (insert "#+END_SRC\n")
       (widen))
     )

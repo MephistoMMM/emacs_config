@@ -14,21 +14,31 @@
         (leave-delimited :location (recipe
                                     :fetcher github
                                     :repo "MephistoMMM/leave-delimited"))
-        (string-inflection :location (recipe
-                                      :fetcher github
-                                      :repo "MephistoMMM/string-inflection"))
         (goenv :location (recipe
                           :fetcher github
                           :repo "MephistoMMM/goenv"))
         ;; haskell-mode
         python
-        web-mode
+        ;; web-mode
         company
         js2-mode
         go-mode
         yaml-mode
         outshine
+        avy
         ))
+
+(defun mp-hacking/post-init-avy ()
+  "Bind keybindings for avy."
+  (define-key evil-normal-state-map (kbd "C-j j") 'evil-avy-goto-char)
+  (define-key evil-normal-state-map (kbd "C-j J") 'evil-avy-goto-char-2)
+  (define-key evil-normal-state-map (kbd "C-j l") 'evil-avy-goto-line)
+  (define-key evil-normal-state-map (kbd "C-j w") 'evil-avy-goto-word-or-subword-1)
+  (define-key evil-normal-state-map (kbd "C-j W") 'evil-avy-goto-word-0)
+  (define-key evil-normal-state-map (kbd "C-j t") 'evil-avy-goto-char-timer)
+  (define-key evil-normal-state-map (kbd "C-j i") 'avy-isearch)
+
+  )
 
 (defun mp-hacking/post-init-yaml-mode ()
   "Show linenum while opening yaml file."
@@ -36,7 +46,7 @@
   )
 
 (defun mp-hacking/init-outshine ()
-  ""
+  "Bind outshine to SPE o o"
   (use-package outshine
     :defer t
     :init
@@ -68,22 +78,6 @@
       "ooH" 'outline-promote
       "ooL" 'outline-demote
       )
-    )
-  )
-
-(defun mp-hacking/init-string-inflection ()
-  "Bind keys for string inflection,Want to turn fooBar into foo_bar? Press crs
-(coerce to snake_case). MixedCase (sim), camelCase (sic), snake_case (sis), lisp_case (sil)
-and UPPER_CASE (siu) are all just 3 keystrokes away."
-  ;;TODO: let lisp case could back to snake_case or others.
-  (use-package string-inflection
-    :defer t
-    :init
-    (self-evil-play-define-key "crs" 'string-inflection-underscore)
-    (self-evil-play-define-key "crm" 'string-inflection-camelcase)
-    (self-evil-play-define-key "crc" 'string-inflection-lower-camelcase)
-    (self-evil-play-define-key "cru" 'string-inflection-upcase)
-    (self-evil-play-define-key "crl" 'string-inflection-lisp)
     )
   )
 
