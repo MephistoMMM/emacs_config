@@ -33,6 +33,11 @@ user-config should be defined in this function!"
   ;; Uploat img link file
   (spacemacs/set-leader-keys "om" 'mp-org/mequ-upload-img-link-file)
 
+  ;; Wraper
+  (spacemacs/declare-prefix "ow" "wrapper")
+  (spacemacs/set-leader-keys-for "wi" 'mp-org/wrap-math-inline-formula)
+  (spacemacs/set-leader-keys-for "wb" 'mp-org/wrap-math-block-formula)
+
   ;; (spacemacs/set-leader-keys "xf" 'fill-region)
   ;; This function is the same as 'gq' in evil(vim)
   )

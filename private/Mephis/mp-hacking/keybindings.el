@@ -42,9 +42,9 @@
   (define-key evil-normal-state-map (kbd "C-w f") 'other-frame)
 
   ;; Search
-  (define-key evil-normal-state-map (kbd "/") 'evil-search-forward)
-  (define-key evil-normal-state-map (kbd "n") 'evil-search-next)
-  (define-key evil-normal-state-map (kbd "N") 'evil-search-previous)
+  ;; (define-key evil-normal-state-map (kbd "/") 'evil-search-forward)
+  ;; (define-key evil-normal-state-map (kbd "n") 'evil-search-next)
+  ;; (define-key evil-normal-state-map (kbd "N") 'evil-search-previous)
 
   ;; Expand
   (define-key evil-normal-state-map (kbd "e") 'er/expand-region)
@@ -54,11 +54,11 @@
 
   ;; Hungry Delete Backwards
   ;; C-h :: hungry delete all chars in line
-  (define-key evil-insert-state-map (kbd "C-h") 'mp-hacking/hungry-delete-current-line)
-  (define-key evil-insert-state-map (kbd "<C-backspace>") 'mp-hacking/hungry-delete)
+  (define-key evil-hybrid-state-map (kbd "C-h") 'mp-hacking/hungry-delete-current-line)
+  (define-key evil-hybrid-state-map (kbd "<C-backspace>") 'mp-hacking/hungry-delete)
 
   ;; Jump out from pairs
-  (define-key evil-insert-state-map (kbd "C-'") 'ar-leave-delimited-forward)
+  (define-key evil-hybrid-state-map (kbd "C-'") 'ar-leave-delimited-forward)
   (define-key evil-normal-state-map (kbd "C-'") 'ar-leave-delimited-forward)
 
   ;; Scroll
@@ -71,8 +71,7 @@
   ;; Yasnippet
   ;; Use C-k to start complete snips and use TAB to go arround the points
   ;; How to write yasnippet: https://joaotavora.github.io/yasnippet/snippet-development.html or http://d.pr/n/1bHuv
-  (define-key evil-insert-state-map (kbd "C-l") 'hippie-expand)
-  (spacemacs/declare-prefix "o" "owner")
+  (define-key evil-hybrid-state-map (kbd "C-l") 'hippie-expand)
   (spacemacs/declare-prefix "oy" "yasnippet")
   (spacemacs/set-leader-keys "oyn" 'yas-new-snippet)                      ;;owner yasnippet new
   (spacemacs/set-leader-keys "oyl" 'yas-load-snippet-buffer)              ;;owner yasnippet load

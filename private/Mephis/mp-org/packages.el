@@ -33,16 +33,8 @@
   (use-package pangu-spacing
     :defer t
     :init
-    (with-eval-after-load 'org
-      (add-hook 'org-mode-hook
-                '(lambda ()
-                   (set (make-local-variable 'pangu-spacing-real-insert-separtor) t)))
-      )
-    (with-eval-after-load 'auctex
-      (add-hook 'LaTeX-mode-hook
-                '(lambda ()
-                   (set (make-local-variable 'pangu-spacing-real-insert-separtor) t)))
-      ))
+    (spacemacs/set-leader-keys "op" 'pangu-spacing-space-current-buffer)
+    )
   )
 
 (defun mp-org/post-init-auctex ()
@@ -85,7 +77,9 @@
     (spacemacs/set-leader-keys-for-major-mode 'org-mode "C-o" 'mp-org/toggle-inline-images)
     (spacemacs/set-leader-keys-for-major-mode 'org-mode "it" 'org-insert-todo-heading)
     (spacemacs/set-leader-keys-for-major-mode 'org-mode "ic" 'mp-org/org-insert-src-code-block)
-    (spacemacs/set-leader-keys-for-major-mode 'org-mode "w" 'mp-org/wrap-source-code)
+    (spacemacs/declare-prefix-for-mode 'org-mode "mw" "wrapper")
+    (spacemacs/set-leader-keys-for-major-mode 'org-mode "ws" 'mp-org/wrap-source-code)
+
 
     ;; config org-download and define custom link
     (setq-default

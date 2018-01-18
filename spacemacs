@@ -128,7 +128,7 @@ This function should only modify configuration layer settings."
    ;; `used-but-keep-unused' installs only the used packages but won't uninstall
    ;; them if they become unused. `all' installs *all* packages supported by
    ;; Spacemacs and never uninstall them. (default is `used-only')
-   dotspacemacs-install-packages 'used-but-keep-unused))
+   dotspacemacs-install-packages 'used-only))
 
 (defun dotspacemacs/init ()
   "Initialization:
@@ -170,7 +170,11 @@ It should only modify the values of Spacemacs settings."
    ;; with `:variables' keyword (similar to layers). Check the editing styles
    ;; section of the documentation for details on available variables.
    ;; (default 'vim)
-   dotspacemacs-editing-style 'vim
+   dotspacemacs-editing-style '(hybrid :variables
+                                       hybrid-mode-use-evil-search-module t
+                                       hybrid-mode-enable-evilified-state t
+                                       hybrid-mode-enable-hjkl-bindings   t
+                                       hybrid-mode-default-state 'normal)
    ;; If non-nil output loading progress in `*Messages*' buffer. (default nil)
    dotspacemacs-verbose-loading nil
    ;; Specify the startup banner. Default value is `official', it displays
@@ -438,8 +442,11 @@ before packages are loaded. If you are unsure, you should try in setting them in
       (when (string-match-p "/zsh$" (getenv "SHELL"))
         (setq exec-path-from-shell-arguments '("-l"))))
 
-  ;; hack for remove purpose mode
-  (setq purpose-mode nil)
+  ;; change search module to evil-search
+  (setq-default evil-search-module 'evil-search)
+
+  ;; declare onwer prifix
+  (spacemacs/declare-prefix "o" "owner")
   )
 
 (defun dotspacemacs/user-config ()
@@ -449,8 +456,8 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-  ;; dotspacemacs-search-tools: ag
-  ;; install ag first!
+  ;; dotspacemacs-search-tools: rg
+  ;; install rg first!
 
   ;; debug on error!
   ;; c d e q

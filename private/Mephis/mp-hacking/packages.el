@@ -36,8 +36,9 @@
   (define-key evil-normal-state-map (kbd "C-j w") 'evil-avy-goto-word-or-subword-1)
   (define-key evil-normal-state-map (kbd "C-j W") 'evil-avy-goto-word-0)
   (define-key evil-normal-state-map (kbd "C-j t") 'evil-avy-goto-char-timer)
-  (define-key evil-normal-state-map (kbd "C-j i") 'avy-isearch)
 
+  ;; there is a bug with evil-search module
+  ;; (define-key evil-normal-state-map (kbd "C-j i") 'avy-isearch)
   )
 
 (defun mp-hacking/post-init-yaml-mode ()
