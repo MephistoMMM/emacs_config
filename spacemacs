@@ -444,9 +444,6 @@ before packages are loaded. If you are unsure, you should try in setting them in
 
   ;; change search module to evil-search
   (setq-default evil-search-module 'evil-search)
-
-  ;; declare onwer prifix
-  (spacemacs/declare-prefix "o" "owner")
   )
 
 (defun dotspacemacs/user-config ()
